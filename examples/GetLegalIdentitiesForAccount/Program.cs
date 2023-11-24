@@ -100,6 +100,7 @@ class Program
         catch (ApiException e)
         {
             Debug.Print("Exception when calling AccountApi.CreateAccount: " + e.Message);
+            Debug.Print("Status Code: " + e.ErrorCode);
             Debug.Print(e.StackTrace);
         }
     }
