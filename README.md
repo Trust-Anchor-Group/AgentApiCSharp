@@ -1,2 +1,3 @@
 # AgentApiCSharp
-C#-implementation of the Agent API
+
+A C#-implementation of the Agent API
