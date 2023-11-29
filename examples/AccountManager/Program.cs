@@ -1,21 +1,22 @@
 ﻿using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
-using Tag.Networking.Agent.Api;
-using Tag.Networking.Agent.Client;
-using Tag.Networking.Agent.Model;
+using TAG.Networking.Agent.Api;
+using TAG.Networking.Agent.Client;
+using TAG.Networking.Agent.Model;
 
 namespace AccountManager
 {
-    internal class Program
+    class Program
     {
-        static string domain = "localhost";
-        static string basePath = "http://localhost";
+        static string domain = "neuron.saunter.tech";
+        static string basePath = "https://neuron.saunter.tech";
         static Configuration config = new Configuration();
         static bool isLoggedIn = false;
 
-
-        // Generates a nonce of a given byte length
+        
+        // Helper method for generating a nonce, not guaranteed to be unique, but sufficient in this example
         public static string GenerateNonce(int byteLength)
         {
             byte[] data = new byte[byteLength];
@@ -29,7 +30,7 @@ namespace AccountManager
             return Convert.ToBase64String(data);
         }
 
-        // Generates a signature for authentication
+        // Generates a client signature for Login requests
         public static string GenerateLoginSignature(string username, string host, string nonce, string password)
         {
             // Concatenate the strings
@@ -49,12 +50,13 @@ namespace AccountManager
             }
         }
 
+        //Genererates the signature for Create requests
         public static string GenerateCreateSignature(string username, string host, string mail, string password, string apiKey, string apiSecret, string nonce)
         {
             // Concatenate the strings
             string s = $"{username}:{host}:{mail}:{password}:{apiKey}:{nonce}";
 
-            // UTF-8 encode the password and the concatenated string
+            // UTF-8 encode the api secret and the concatenated string
             byte[] key = Encoding.UTF8.GetBytes(apiSecret);
             byte[] data = Encoding.UTF8.GetBytes(s);
 
@@ -71,11 +73,11 @@ namespace AccountManager
         static void CreateAccount()
         {
             Console.WriteLine("Enter API key:");
-            string apikey = Console.ReadLine();
+            string apiKey = Console.ReadLine();
             Console.WriteLine("Enter API secret:");
-            string apisecret = Console.ReadLine();
+            string apiSecret = Console.ReadLine();
             Console.WriteLine("Enter username:");
-            string userName = Console.ReadLine();
+            string username = Console.ReadLine();
             Console.WriteLine("Enter password:");
             string password = Console.ReadLine();
             Console.WriteLine("Enter email:");
@@ -83,13 +85,14 @@ namespace AccountManager
 
             var apiInstance = new AccountApi(config);
             string nonce = GenerateNonce(32);
-            var createAccountBody = new CreateAccountBody(userName, email, password, apikey, nonce, GenerateCreateSignature(userName, domain, email, password, apikey, apisecret, nonce));
+            var createAccountBody = new CreateAccountBody(username, email, password, apiKey, nonce, GenerateCreateSignature(username, domain, email, password, apiKey, apiSecret, nonce), 3600);
 
             try
             {
                 // Create Account
                 CreateAccountResponse result = apiInstance.CreateAccount(createAccountBody);
-                Debug.WriteLine(result);
+                config.DefaultHeaders.Add("Authorization", $"Bearer {result.Jwt}");
+                isLoggedIn = true;
             }
             catch (ApiException e)
             {
@@ -120,10 +123,39 @@ namespace AccountManager
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling AccountApi.Login: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
+                Console.WriteLine(e.Message);
+             // Console.WriteLine("Status Code: " + e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
             }
+        }
+
+        static void Verify()
+        {
+
+            var apiInstance = new AccountApi(config);
+
+            try
+            {
+                var sessionTokenResponse = apiInstance.GetSessionToken();
+
+                if (sessionTokenResponse.AccountCreated.Enabled)
+                    return;
+
+                Console.WriteLine("Your account needs to be verified");
+                Console.WriteLine("Enter email");
+                string email = Console.ReadLine();
+                Console.WriteLine("Enter code");
+                string code = Console.ReadLine();
+
+                apiInstance.VerifyEMail(new VerifyEMailBody(email, code));
+            }
+            catch(ApiException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Status Code: " + e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+
         }
 
         static void Logout()
@@ -140,6 +172,7 @@ namespace AccountManager
             bool exit = false;
             while (!exit)
             {
+
                 if (!isLoggedIn)
                 {
                     Console.WriteLine("1. Create an account");
@@ -168,6 +201,12 @@ namespace AccountManager
                 }
                 else
                 {
+
+                 //   Verify();
+
+
+                    Console.WriteLine("Logged in");
+                    Console.WriteLine("---------");
                     Console.WriteLine("1. Logout");
                     Console.WriteLine("2. Exit");
                     Console.Write("Enter your choice: ");
