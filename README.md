@@ -22,7 +22,7 @@ You can find an example solution that demonstrates how to use the SDK in the `ex
 
 - ApiUsageExample
   - A simple console application, which goes over how to use the SDK, including Configuration, Api instances and requests.
-- AccountApiExample
+- AccountExample
   - A console application which allows a user to create and login to accounts on a neuron.
 
 Examples with continuously be expanded as this project progresses
