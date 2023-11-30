@@ -6,6 +6,8 @@ using TAG.Networking.Agent.Api;
 using TAG.Networking.Agent.Client;
 using TAG.Networking.Agent.Model;
 
+
+
 namespace AccountManager
 {
     class Program
@@ -15,7 +17,7 @@ namespace AccountManager
         static Configuration config = new Configuration();
         static bool isLoggedIn = false;
 
-        
+
         // Helper method for generating a nonce, not guaranteed to be unique, but sufficient in this example
         public static string GenerateNonce(int byteLength)
         {
@@ -124,7 +126,7 @@ namespace AccountManager
             catch (ApiException e)
             {
                 Console.WriteLine(e.Message);
-             // Console.WriteLine("Status Code: " + e.ErrorCode);
+                // Console.WriteLine("Status Code: " + e.ErrorCode);
                 Console.WriteLine(e.StackTrace);
             }
         }
@@ -149,7 +151,7 @@ namespace AccountManager
 
                 apiInstance.VerifyEMail(new VerifyEMailBody(email, code));
             }
-            catch(ApiException e)
+            catch (ApiException e)
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Status Code: " + e.ErrorCode);
@@ -202,7 +204,7 @@ namespace AccountManager
                 else
                 {
 
-                 //   Verify();
+                    //   Verify();
 
 
                     Console.WriteLine("Logged in");

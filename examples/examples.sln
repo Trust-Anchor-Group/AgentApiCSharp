@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountManager", "AccountMa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TAG.Networking.Agent", "..\sdk\src\TAG.Networking.Agent\TAG.Networking.Agent.csproj", "{AAE6739B-4693-45F3-8D49-921870599098}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiUsageExample", "ApiUsageExample\ApiUsageExample.csproj", "{B125055D-BA18-460B-A15C-F7DAF3FE0EF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountApiExample", "AccountApiExample\AccountApiExample.csproj", "{F09E43A2-5BF2-47FC-B76B-71D7E77C715A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{AAE6739B-4693-45F3-8D49-921870599098}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAE6739B-4693-45F3-8D49-921870599098}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAE6739B-4693-45F3-8D49-921870599098}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B125055D-BA18-460B-A15C-F7DAF3FE0EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B125055D-BA18-460B-A15C-F7DAF3FE0EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B125055D-BA18-460B-A15C-F7DAF3FE0EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B125055D-BA18-460B-A15C-F7DAF3FE0EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F09E43A2-5BF2-47FC-B76B-71D7E77C715A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F09E43A2-5BF2-47FC-B76B-71D7E77C715A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F09E43A2-5BF2-47FC-B76B-71D7E77C715A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F09E43A2-5BF2-47FC-B76B-71D7E77C715A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
