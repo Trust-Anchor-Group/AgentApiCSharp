@@ -11,7 +11,7 @@ namespace AccountApiExample
         static async Task Main(string[] args)
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://lab.tagroot.io"; //Here you can change the the base path (domain) of the api
+            config.BasePath = "http://localhost"; //Here you can change the the base path (domain) of the api
 
             //Create accountApi instance based on config
             AccountApi accountApi = new AccountApi(config);

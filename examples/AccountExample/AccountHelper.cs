@@ -11,9 +11,11 @@ using TAG.Networking.Agent.Model;
 
 public static class AccountHelper
 {
-    //For client signatures a nonce is required
-    //From the neuron documentatin: "A unique random string, at least 32 characters long, with sufficient entropy to not be reused again. If reused, an error will be returned."
-    //this function is not garantueed to be unique, but is sufficient for the example
+    /// <summary>
+    /// Generates a nonce (number used once) as a unique random string. This is required for client signatures.
+    /// Note: This method is not guaranteed to be unique, but it is sufficient for this example.
+    /// </summary>
+    /// <returns>A Base64 encoded nonce string.</returns>
     private static string GenerateNonce()
     {
         byte[] data = new byte[32];
@@ -27,13 +29,15 @@ public static class AccountHelper
         return Convert.ToBase64String(data);
     }
 
-    private static async Task VerifyEMail(AccountApi accountApi, string mail)
-    {
-        Console.WriteLine("Enter code sent to " + mail + ":");
-        string code = Console.ReadLine();
-        await accountApi.VerifyEMailAsync(new VerifyEMailBody(mail, code));
-    }
-
+    /// <summary>
+    /// Creates a new account using the provided API key, secret, username, password, and email.
+    /// </summary>
+    /// <param name="accountApi">The AccountApi instance to make the request.</param>
+    /// <param name="apiKey">API key for authentication.</param>
+    /// <param name="apiSecret">API secret for generating the signature.</param>
+    /// <param name="username">Username for the new account.</param>
+    /// <param name="password">Password for the new account.</param>
+    /// <param name="mail">Email address for the new account.</param>
     public static async Task<CreateAccountResponse> CreateAccount(AccountApi accountApi, string apiKey, string apiSecret, string username, string password, string mail)
     {
         //Generate a nonce
@@ -66,11 +70,15 @@ public static class AccountHelper
     }
 
 
-
+    /// <summary>
+    /// Logs in a user using their username and password.
+    /// </summary>
+    /// <param name="accountApi">The AccountApi instance to make the login request.</param>
+    /// <param name="username">Username for the account.</param>
+    /// <param name="password">Password for the account.</param>
+    /// <returns>The response from the login API call.</returns>
     public static async Task<LoginResponse> Login(AccountApi accountApi, string username, string password)
-
     {
-
         //Generate a nonce
         string nonce = GenerateNonce();
 
