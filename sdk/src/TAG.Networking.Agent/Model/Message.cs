@@ -45,7 +45,7 @@ namespace TAG.Networking.Agent.Model
         /// <param name="type">The type of message. (required).</param>
         /// <param name="timestamp">The timestamp of the message. (required).</param>
         /// <param name="content">The content of the message. (required).</param>
-        public Message(string id = default(string), string from = default(string), string to = default(string), string type = default(string), DateTime timestamp = default(DateTime), string content = default(string))
+        public Message(string id = default(string), string from = default(string), string to = default(string), string type = default(string), int timestamp = default(int), string content = default(string))
         {
             // to ensure "from" is required (not null)
             if (from == null)
@@ -108,7 +108,7 @@ namespace TAG.Networking.Agent.Model
         /// </summary>
         /// <value>The timestamp of the message.</value>
         [DataMember(Name = "timestamp", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime Timestamp { get; set; }
+        public int Timestamp { get; set; }
 
         /// <summary>
         /// The content of the message.
@@ -188,8 +188,7 @@ namespace TAG.Networking.Agent.Model
                 ) && 
                 (
                     this.Timestamp == input.Timestamp ||
-                    (this.Timestamp != null &&
-                    this.Timestamp.Equals(input.Timestamp))
+                    this.Timestamp.Equals(input.Timestamp)
                 ) && 
                 (
                     this.Content == input.Content ||
@@ -223,10 +222,7 @@ namespace TAG.Networking.Agent.Model
                 {
                     hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
-                if (this.Timestamp != null)
-                {
-                    hashCode = (hashCode * 59) + this.Timestamp.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Timestamp.GetHashCode();
                 if (this.Content != null)
                 {
                     hashCode = (hashCode * 59) + this.Content.GetHashCode();

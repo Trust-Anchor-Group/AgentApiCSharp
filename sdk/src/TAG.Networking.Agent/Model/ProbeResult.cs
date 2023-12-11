@@ -43,7 +43,7 @@ namespace TAG.Networking.Agent.Model
         /// <param name="type">Type of presence sent. Can be the empty string (meaning available) or unavailable. (required).</param>
         /// <param name="recieved">When presence was received by the server of the contact. (required).</param>
         /// <param name="stanza">The XML stanza that was sent. (required).</param>
-        public ProbeResult(string jid = default(string), string type = default(string), DateTime recieved = default(DateTime), string stanza = default(string))
+        public ProbeResult(string jid = default(string), string type = default(string), int recieved = default(int), string stanza = default(string))
         {
             // to ensure "jid" is required (not null)
             if (jid == null)
@@ -85,7 +85,7 @@ namespace TAG.Networking.Agent.Model
         /// </summary>
         /// <value>When presence was received by the server of the contact.</value>
         [DataMember(Name = "recieved", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime Recieved { get; set; }
+        public int Recieved { get; set; }
 
         /// <summary>
         /// The XML stanza that was sent.
@@ -153,8 +153,7 @@ namespace TAG.Networking.Agent.Model
                 ) && 
                 (
                     this.Recieved == input.Recieved ||
-                    (this.Recieved != null &&
-                    this.Recieved.Equals(input.Recieved))
+                    this.Recieved.Equals(input.Recieved)
                 ) && 
                 (
                     this.Stanza == input.Stanza ||
@@ -180,10 +179,7 @@ namespace TAG.Networking.Agent.Model
                 {
                     hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
-                if (this.Recieved != null)
-                {
-                    hashCode = (hashCode * 59) + this.Recieved.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Recieved.GetHashCode();
                 if (this.Stanza != null)
                 {
                     hashCode = (hashCode * 59) + this.Stanza.GetHashCode();

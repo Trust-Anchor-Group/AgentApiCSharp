@@ -52,11 +52,10 @@ namespace TAG.Networking.Agent.Client
         public static readonly ExceptionFactory DefaultExceptionFactory = (methodName, response) =>
         {
             var status = (int)response.StatusCode;
-            if (status >= 400 || status == 0)
+            if (status >= 400)
             {
-
                 return new ApiException(status,
-                    string.Format("Error calling {0}: {1}", methodName, response.RawContent ?? response.ErrorText),
+                    string.Format("Error calling {0}: {1}", methodName, response.RawContent),
                     response.RawContent, response.Headers);
             }
             return null;
@@ -189,7 +188,7 @@ namespace TAG.Networking.Agent.Client
         /// <summary>
         /// Gets or sets the base path for API access.
         /// </summary>
-        public virtual string BasePath
+        public virtual string BasePath 
         {
             get { return _basePath; }
             set { _basePath = value; }
@@ -527,7 +526,7 @@ namespace TAG.Networking.Agent.Client
 
             return url;
         }
-
+        
         /// <summary>
         /// Gets and Sets the RemoteCertificateValidationCallback
         /// </summary>
@@ -544,7 +543,7 @@ namespace TAG.Networking.Agent.Client
         {
             string report = "C# SDK (TAG.Networking.Agent) Debug Report:\n";
             report += "    OS: " + System.Environment.OSVersion + "\n";
-            report += "    .NET Framework Version: " + System.Environment.Version + "\n";
+            report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 1.0.0\n";
             report += "    SDK Package Version: 1.0.0\n";
 

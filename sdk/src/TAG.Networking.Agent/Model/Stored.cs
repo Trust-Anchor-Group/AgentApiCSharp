@@ -41,7 +41,7 @@ namespace TAG.Networking.Agent.Model
         /// </summary>
         /// <param name="created">When the information record was first created. (required).</param>
         /// <param name="updated">When the information record was last updated. (required).</param>
-        public Stored(DateTime created = default(DateTime), DateTime updated = default(DateTime))
+        public Stored(int created = default(int), int updated = default(int))
         {
             this.Created = created;
             this.Updated = updated;
@@ -52,14 +52,14 @@ namespace TAG.Networking.Agent.Model
         /// </summary>
         /// <value>When the information record was first created.</value>
         [DataMember(Name = "created", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime Created { get; set; }
+        public int Created { get; set; }
 
         /// <summary>
         /// When the information record was last updated.
         /// </summary>
         /// <value>When the information record was last updated.</value>
         [DataMember(Name = "updated", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime Updated { get; set; }
+        public int Updated { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,13 +108,11 @@ namespace TAG.Networking.Agent.Model
             return 
                 (
                     this.Created == input.Created ||
-                    (this.Created != null &&
-                    this.Created.Equals(input.Created))
+                    this.Created.Equals(input.Created)
                 ) && 
                 (
                     this.Updated == input.Updated ||
-                    (this.Updated != null &&
-                    this.Updated.Equals(input.Updated))
+                    this.Updated.Equals(input.Updated)
                 );
         }
 
@@ -127,14 +125,8 @@ namespace TAG.Networking.Agent.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Created != null)
-                {
-                    hashCode = (hashCode * 59) + this.Created.GetHashCode();
-                }
-                if (this.Updated != null)
-                {
-                    hashCode = (hashCode * 59) + this.Updated.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Created.GetHashCode();
+                hashCode = (hashCode * 59) + this.Updated.GetHashCode();
                 return hashCode;
             }
         }

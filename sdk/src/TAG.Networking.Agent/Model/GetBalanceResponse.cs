@@ -43,7 +43,7 @@ namespace TAG.Networking.Agent.Model
         /// <param name="reserved">Current amount of eDaler that has been reserved. (required).</param>
         /// <param name="currency">Currency of wallet. (required).</param>
         /// <param name="timestamp">Timestamp of balance statement. (required).</param>
-        public GetBalanceResponse(decimal amount = default(decimal), decimal reserved = default(decimal), string currency = default(string), DateTime timestamp = default(DateTime))
+        public GetBalanceResponse(decimal amount = default(decimal), decimal reserved = default(decimal), string currency = default(string), int timestamp = default(int))
         {
             this.Amount = amount;
             this.Reserved = reserved;
@@ -82,7 +82,7 @@ namespace TAG.Networking.Agent.Model
         /// </summary>
         /// <value>Timestamp of balance statement.</value>
         [DataMember(Name = "timestamp", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime Timestamp { get; set; }
+        public int Timestamp { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -146,8 +146,7 @@ namespace TAG.Networking.Agent.Model
                 ) && 
                 (
                     this.Timestamp == input.Timestamp ||
-                    (this.Timestamp != null &&
-                    this.Timestamp.Equals(input.Timestamp))
+                    this.Timestamp.Equals(input.Timestamp)
                 );
         }
 
@@ -166,10 +165,7 @@ namespace TAG.Networking.Agent.Model
                 {
                     hashCode = (hashCode * 59) + this.Currency.GetHashCode();
                 }
-                if (this.Timestamp != null)
-                {
-                    hashCode = (hashCode * 59) + this.Timestamp.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Timestamp.GetHashCode();
                 return hashCode;
             }
         }

@@ -135,6 +135,7 @@ namespace TAG.Networking.Agent.Client
                 return Convert.ChangeType(response.Content, type);
             }
 
+            // TODO: document theses changes 
             if ((int)response.StatusCode >= 300)
             {
                 throw new ApiException((int)response.StatusCode, "Error calling the API: " + response.Content, response.Content);
@@ -587,6 +588,12 @@ namespace TAG.Networking.Agent.Client
                 else if (typeof(T).Name == "Byte[]") // for byte response
                 {
                     response.Data = (T)(object)response.RawBytes;
+                }
+
+                //TODO: document these changes
+                if ((int)response.StatusCode == 0)
+                {
+                    throw new ApiException((int)response.StatusCode, response.ErrorMessage);
                 }
 
                 InterceptResponse(request, response);

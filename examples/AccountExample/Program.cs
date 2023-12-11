@@ -11,11 +11,10 @@ namespace AccountApiExample
         static async Task Main(string[] args)
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost"; //Here you can change the the base path (domain) of the api
+            config.BasePath = "http://locasdsdlhost"; //Here you can change the the base path (domain) of the api
 
             //Create accountApi instance based on config
             AccountApi accountApi = new AccountApi(config);
-
 
             bool isLoggedIn = false;
             bool exit = false;
@@ -46,6 +45,7 @@ namespace AccountApiExample
                                 Console.WriteLine("Enter email:");
                                 string mail = Console.ReadLine();
 
+                                //Send the request
                                 CreateAccountResponse response = await AccountHelper.CreateAccount(accountApi, apiKey, apiSecret, username, password, mail);
 
                                 //Add the bearer token to the instance
@@ -87,7 +87,9 @@ namespace AccountApiExample
                                 Console.WriteLine("Enter password:");
                                 string password = Console.ReadLine();
 
+                                //Send the request
                                 LoginResponse response = await AccountHelper.Login(accountApi, username, password);
+
                                 Console.WriteLine("Successfully logged in");
                                 Console.WriteLine("jwt: " + response.Jwt);
                                 //Calculate the expiration date of the jwt
