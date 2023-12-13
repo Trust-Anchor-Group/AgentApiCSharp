@@ -720,6 +720,9 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://localhost";
+            // Configure Bearer token for authorization: BearerAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
             var apiInstance = new AccountApi(config);
             var verifyEMailBody = new VerifyEMailBody(); // VerifyEMailBody | 
 
@@ -772,7 +775,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 

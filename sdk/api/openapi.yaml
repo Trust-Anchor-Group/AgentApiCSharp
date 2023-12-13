@@ -389,6 +389,8 @@ paths:
                 type: string
           description: "Too many requests have been made, for this resource, or any\
             \ of the referenced resources in the request."
+      security:
+      - BearerAuth: []
       summary: Verify E-Mail
       tags:
       - Account

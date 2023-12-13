@@ -1152,6 +1152,9 @@ namespace TAG.Networking.Agent.Api
                 }
             }
 
+            if (localVarResponse.StatusCode == 0)
+                throw new ApiException(0, localVarResponse.ErrorText);
+
             return localVarResponse;
         }
 
@@ -1670,6 +1673,12 @@ namespace TAG.Networking.Agent.Api
             localVarRequestOptions.Operation = "AccountApi.VerifyEMail";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (BearerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<VerifyEMailResponse>("/Agent/Account/VerifyEMail", localVarRequestOptions, this.Configuration);
@@ -1747,6 +1756,12 @@ namespace TAG.Networking.Agent.Api
             localVarRequestOptions.Operation = "AccountApi.VerifyEMail";
             localVarRequestOptions.OperationIndex = operationIndex;
 
+            // authentication (BearerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
             var localVarResponse = await this.AsynchronousClient.PostAsync<VerifyEMailResponse>("/Agent/Account/VerifyEMail", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);

@@ -19,13 +19,7 @@ The SDK will also be available as a nuget in the near future
 ## Examples
 
 You can find an example solution that demonstrates how to use the SDK in the `examples` folder. This will help you get started with integrating the SDK into your own project.
-
-- ApiUsageExample
-  - A simple console application, which goes over how to use the SDK, including Configuration, Api instances and requests.
-- AccountExample
-  - A console application which allows a user to create and login to accounts on a neuron.
-
-Examples with continuously be expanded as this project progresses
+In this solution each project is a diffrent example. In each project folder you can find a `readme` file describing the example.
 
 ## Documentation
 

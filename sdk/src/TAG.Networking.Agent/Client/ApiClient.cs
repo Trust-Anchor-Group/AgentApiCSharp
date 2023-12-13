@@ -135,12 +135,6 @@ namespace TAG.Networking.Agent.Client
                 return Convert.ChangeType(response.Content, type);
             }
 
-            // TODO: document theses changes 
-            if ((int)response.StatusCode >= 300)
-            {
-                throw new ApiException((int)response.StatusCode, "Error calling the API: " + response.Content, response.Content);
-            }
-
             // at this point, it must be a model (json)
             try
             {
@@ -484,7 +478,7 @@ namespace TAG.Networking.Agent.Client
                 {
                     try
                     {
-                        response.Data = (T)typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
+                        response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
                     }
                     catch (Exception ex)
                     {
@@ -579,7 +573,7 @@ namespace TAG.Networking.Agent.Client
                 // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
                 if (typeof(TAG.Networking.Agent.Model.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
                 {
-                    response.Data = (T)typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
+                    response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
                 }
                 else if (typeof(T).Name == "Stream") // for binary response
                 {
@@ -588,12 +582,6 @@ namespace TAG.Networking.Agent.Client
                 else if (typeof(T).Name == "Byte[]") // for byte response
                 {
                     response.Data = (T)(object)response.RawBytes;
-                }
-
-                //TODO: document these changes
-                if ((int)response.StatusCode == 0)
-                {
-                    throw new ApiException((int)response.StatusCode, response.ErrorMessage);
                 }
 
                 InterceptResponse(request, response);

@@ -11,7 +11,7 @@ namespace AccountApiExample
         static async Task Main(string[] args)
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://locasdsdlhost"; //Here you can change the the base path (domain) of the api
+            config.BasePath = "http://localhost"; //Here you can change the the base path (domain) of the api
 
             //Create accountApi instance based on config
             AccountApi accountApi = new AccountApi(config);
@@ -98,7 +98,7 @@ namespace AccountApiExample
                                 Console.WriteLine("jwt expires: " + expireDate);
 
                                 //Update global configuration
-                                config.DefaultHeaders.Add("Authorization", "Bearer " + response.Jwt);
+                                config.AccessToken = response.Jwt;
                                 accountApi.Configuration = Configuration.MergeConfigurations(config, accountApi.Configuration);
                                 isLoggedIn = true;
                             }
