@@ -9,6 +9,6 @@ namespace WalletExample
 {
     internal class GlobalConfig
     {
-        public static Configuration instance = new() { BasePath = "http://locsdsdalhost" };
+        public static Configuration instance = new() { BasePath = "http://localhost" };
     }
 }

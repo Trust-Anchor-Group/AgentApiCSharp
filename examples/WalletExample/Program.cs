@@ -1,4 +1,5 @@
-﻿using TAG.Networking.Agent.Client;
+﻿using TAG.Networking.Agent.Api;
+using TAG.Networking.Agent.Client;
 using TAG.Networking.Agent.Model;
 
 namespace WalletExample
@@ -52,7 +53,67 @@ namespace WalletExample
 
         static async Task LoggedInMenu()
         {
+            bool exit = false;
+            while (!exit)
+            {
+                Console.WriteLine("1. Apply for a legal id");
+                Console.WriteLine("2. Check Identity Application Status");
+                Console.WriteLine("3. Exit");
+                Console.Write("Enter your choice: ");
 
+                string choice = Console.ReadLine();
+                try
+                {
+                    switch (choice)
+                    {
+                        case "1":
+                            await ApplyForLegalId();
+                            break;
+                        case "2":
+                            await PrintIdentityStatus();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                catch (ApiException e)
+                {
+                    Console.WriteLine("An error occured: " + e.Message);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        static async Task ApplyForLegalId()
+        {
+            LegalApi api = new LegalApi(GlobalConfig.instance);
+
+        }
+
+        /// <summary>
+        /// Fetches all identities connected to an account and print the status about the latest application
+        /// </summary>
+        static async Task PrintIdentityStatus()
+        {
+            LegalApi api = new LegalApi(GlobalConfig.instance);
+            IdentitiesResponseJSON response = await api.GetIdentitiesAsync(new GetIdentitiesBody(0, 10));
+
+
+            if (response.Identities.Count == 0)
+            {
+                Console.WriteLine("No identities found");
+                return;
+            }
+
+            //sort response.Identities based on their creation date
+            response.Identities.Sort((x, y) => x.Status.Created.CompareTo(y.Status.Created));
+
+            //Print information about the latest identity
+            Console.WriteLine("Identity: " + response.Identities[0].Id);
+            Console.WriteLine("Status: " + response.Identities[0].Status.State);
         }
 
         /// <summary>
