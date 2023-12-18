@@ -40,7 +40,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DomainInfoResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/DomainInfoResponse'
           description: OK
@@ -173,7 +173,7 @@ paths:
               seconds: Required(Int(0 < PSeconds <= 3600))
             schema:
               $ref: '#/components/schemas/CreateAccountBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/CreateAccountBody'
         required: true
@@ -183,7 +183,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAccountResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/CreateAccountResponse'
           description: OK
@@ -251,7 +251,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetSessionTokenBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetSessionTokenBody'
       responses:
@@ -260,7 +260,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetSessionTokenResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/GetSessionTokenResponse'
           description: OK
@@ -325,7 +325,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VerifyEMailBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/VerifyEMailBody'
         required: true
@@ -335,7 +335,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyEMailResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/VerifyEMailResponse'
           description: OK
@@ -389,6 +389,8 @@ paths:
                 type: string
           description: "Too many requests have been made, for this resource, or any\
             \ of the referenced resources in the request."
+      security:
+      - BearerAuth: []
       summary: Verify E-Mail
       tags:
       - Account
@@ -400,7 +402,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/LoginBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/LoginBody'
         required: true
@@ -410,7 +412,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoginResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/LoginResponse'
           description: OK
@@ -475,7 +477,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/WwwLoginBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/WwwLoginBody'
       responses:
@@ -484,7 +486,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoginResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/LoginResponse'
           description: OK
@@ -551,7 +553,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RefreshBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/RefreshBody'
         required: true
@@ -561,7 +563,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoginResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/LoginResponse'
           description: OK
@@ -628,7 +630,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/LogoutBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/LogoutBody'
       responses:
@@ -637,7 +639,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AckResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/AckResponse'
           description: OK
@@ -704,7 +706,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RecoverBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/RecoverBody'
       responses:
@@ -713,7 +715,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RecoverResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/RecoverResponse'
           description: OK
@@ -780,7 +782,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SendTextMessageBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/SendTextMessageBody'
         required: true
@@ -790,7 +792,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StanzaResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/StanzaResult'
           description: OK
@@ -861,7 +863,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SendFormattedMessage'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/SendFormattedMessage'
         required: true
@@ -871,7 +873,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StanzaResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/StanzaResult'
           description: OK
@@ -940,7 +942,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SendXmlMessage'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/SendXmlMessage'
         required: true
@@ -950,7 +952,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StanzaResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/StanzaResult'
           description: OK
@@ -1019,7 +1021,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SendPresenceSubscriptionBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/SendPresenceSubscriptionBody'
         required: true
@@ -1029,7 +1031,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PresenceSubscriptionResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/PresenceSubscriptionResult'
           description: OK
@@ -1098,7 +1100,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SendPresenceUnsubscriptionBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/SendPresenceUnsubscriptionBody'
         required: true
@@ -1108,7 +1110,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StanzaResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/StanzaResult'
           description: OK
@@ -1177,7 +1179,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SendSubscriptionAcceptedBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/SendSubscriptionAcceptedBody'
         required: true
@@ -1187,7 +1189,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendSubscriptionAcceptedResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/SendSubscriptionAcceptedResponse'
           description: OK
@@ -1256,7 +1258,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SendSubscriptionDeclinedBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/SendSubscriptionDeclinedBody'
         required: true
@@ -1266,7 +1268,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StanzaResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/StanzaResult'
           description: OK
@@ -1334,7 +1336,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetRosterBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetRosterBody'
       responses:
@@ -1343,7 +1345,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRosterResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/GetRosterResponse'
           description: OK
@@ -1411,7 +1413,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetRosterItemBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetRosterItemBody'
         required: true
@@ -1421,7 +1423,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RosterItem'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/RosterItem'
           description: OK
@@ -1489,7 +1491,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SetRosterItemBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/SetRosterItemBody'
         required: true
@@ -1499,7 +1501,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RosterItem'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/RosterItem'
           description: OK
@@ -1567,7 +1569,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RemoveRosterItemBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/RemoveRosterItemBody'
         required: true
@@ -1577,7 +1579,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RosterItem'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/RosterItem'
           description: OK
@@ -1646,7 +1648,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PresenceProbeBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/PresenceProbeBody'
         required: true
@@ -1656,7 +1658,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProbeResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ProbeResult'
           description: OK
@@ -1727,7 +1729,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/InformationQueryBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/InformationQueryBody'
         required: true
@@ -1737,7 +1739,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryResultJson'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/QueryResultXml'
           description: OK
@@ -1804,7 +1806,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PopMessagesBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/PopMessagesBody'
         required: true
@@ -1814,7 +1816,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MessageResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/MessageResult'
           description: OK
@@ -1882,7 +1884,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SavePrivateXmlBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/SavePrivateXmlBody'
         required: true
@@ -1892,7 +1894,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Stored'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/Stored'
           description: OK
@@ -1960,7 +1962,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/LoadPrivateXmlBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/LoadPrivateXmlBody'
         required: true
@@ -1970,7 +1972,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrivateXml'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/PrivateXml'
           description: OK
@@ -2146,7 +2148,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContentResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ContentResponse'
           description: Content successfully uploaded
@@ -2292,7 +2294,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContentResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ContentResponse'
           description: OK
@@ -2360,7 +2362,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetAlgorithmsBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetAlgorithmsBody'
       responses:
@@ -2369,7 +2371,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AlgorithmsResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/AlgorithmsResult'
           description: OK
@@ -2436,7 +2438,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateKeyBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/CreateKeyBody'
       responses:
@@ -2445,7 +2447,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Stored'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/Stored'
           description: OK
@@ -2511,7 +2513,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetPublicKeyBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetPublicKeyBody'
       responses:
@@ -2520,7 +2522,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetPublicKeyResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/GetPublicKeyResponse'
           description: OK
@@ -2577,6 +2579,84 @@ paths:
       summary: Get Public Key
       tags:
       - Crypto
+  /Agent/Legal/ApplyId:
+    post:
+      description: Allows the client to apply for a new Legal Identity on the server.
+        The application must be signed using one of the keys created by the client.
+      operationId: applyId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplyIdBody'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ApplyIdBody'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityResponseJSON'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/IdentityResponse'
+          description: OK
+        "400":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Bad request, most probably due to the content sent in the\
+            \ request not conforming to the specification."
+        "401":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Unauthorized access to a resource was prevented. Client must
+            login first.
+        "403":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Forbidden access to resource was stopped. Client does not\
+            \ have sufficient privileges to access resource or perform requested action,\
+            \ or access is done using unencrypted, or a connection that is not sufficiently\
+            \ encrypted."
+        "404":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Resource, or item referenced in request, was not found."
+        "405":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Method not allowed. The method used in the request is not allowed
+            for the resource.
+        "406":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Content sent, or content requested in a format that is not\
+            \ supported by the resource."
+        "429":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Too many requests have been made, for this resource, or any\
+            \ of the referenced resources in the request."
+      security:
+      - BearerAuth: []
+      summary: Apply for a legal identity
+      tags:
+      - Legal
   /Agent/Legal/ValidatePNr:
     post:
       description: Allows the client to validate a personal number before using it
@@ -2587,7 +2667,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValidatePNrBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/ValidatePNrBody'
       responses:
@@ -2596,7 +2676,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidatePNrResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ValidatePNrResponse'
           description: OK
@@ -2664,7 +2744,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetApplicationAttributesBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetApplicationAttributesBody'
       responses:
@@ -2673,7 +2753,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetApplicationAttributesResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/GetApplicationAttributesResponse'
           description: OK
@@ -2743,7 +2823,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetIdentityBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetIdentityBody'
       responses:
@@ -2752,7 +2832,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IdentityResponseJSON'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/IdentityResponse'
           description: OK
@@ -2822,7 +2902,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetIdentitiesBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetIdentitiesBody'
       responses:
@@ -2831,7 +2911,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IdentitiesResponseJSON'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/IdentitiesResponse'
           description: OK
@@ -2899,7 +2979,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AddIdAttachmentBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/AddIdAttachmentBody'
       responses:
@@ -2908,7 +2988,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IdentityResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/IdentityResponse'
           description: OK
@@ -2981,7 +3061,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ReadyForApprovalBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/ReadyForApprovalBody'
       responses:
@@ -2990,7 +3070,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AckResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/AckResponse'
           description: OK
@@ -3059,7 +3139,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetServiceProvidersForIdReviewBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetServiceProvidersForIdReviewBody'
       responses:
@@ -3068,7 +3148,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProvidersResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ProvidersResponse'
           description: OK
@@ -3137,7 +3217,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SelectReviewServiceBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/SelectReviewServiceBody'
       responses:
@@ -3146,7 +3226,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AckResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/AckResponse'
           description: OK
@@ -3218,7 +3298,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AuthorizeAccessToIdBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/AuthorizeAccessToIdBody'
       responses:
@@ -3227,7 +3307,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AckResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/AckResponse'
           description: OK
@@ -3296,7 +3376,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PetitionPeerReviewBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/PetitionPeerReviewBody'
       responses:
@@ -3305,7 +3385,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AckResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/AckResponse'
           description: OK
@@ -3374,7 +3454,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PetitionIdBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/PetitionIdBody'
       responses:
@@ -3383,7 +3463,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AckResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/AckResponse'
           description: OK
@@ -3452,7 +3532,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PetitionSignatureBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/PetitionSignatureBody'
       responses:
@@ -3461,7 +3541,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AckResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/AckResponse'
           description: OK
@@ -3531,7 +3611,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateContractBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/CreateContractBody'
       responses:
@@ -3540,7 +3620,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContractResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ContractResponse'
           description: OK
@@ -3610,7 +3690,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetContractBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetContractBody'
       responses:
@@ -3619,7 +3699,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContractResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ContractResponse'
           description: OK
@@ -3688,7 +3768,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SignContractBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/SignContractBody'
       responses:
@@ -3697,7 +3777,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContractResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ContractResponse'
           description: OK
@@ -3765,7 +3845,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SignDataBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/SignDataBody'
       responses:
@@ -3774,7 +3854,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SignatureResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/SignatureResponse'
           description: OK
@@ -3843,7 +3923,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetCreatedContractsBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetCreatedContractsBody'
       responses:
@@ -3852,7 +3932,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContractsResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ContractsResponse'
           description: OK
@@ -3921,7 +4001,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AuthorizeAccessToContractBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/AuthorizeAccessToContractBody'
       responses:
@@ -3930,7 +4010,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AckResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/AckResponse'
           description: OK
@@ -3999,7 +4079,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetBalanceBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetBalanceBody'
       responses:
@@ -4008,7 +4088,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetBalanceResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/GetBalanceResponse'
           description: OK
@@ -4076,7 +4156,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProcessEDalerUriBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/ProcessEDalerUriBody'
       responses:
@@ -4085,7 +4165,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProcessResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ProcessResult'
           description: OK
@@ -4154,7 +4234,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetServiceProvidersForBuyingEDalerBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetServiceProvidersForBuyingEDalerBody'
       responses:
@@ -4163,7 +4243,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProvidersResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ProvidersResponse'
           description: OK
@@ -4232,7 +4312,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetServiceProvidersForSellingEDalerBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetServiceProvidersForSellingEDalerBody'
       responses:
@@ -4241,7 +4321,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProvidersResponse'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ProvidersResponse'
           description: OK
@@ -4310,7 +4390,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetPaymentOptionsForBuyingEDalerBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetPaymentOptionsForBuyingEDalerBody'
       responses:
@@ -4319,7 +4399,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionInformation'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/TransactionInformation'
           description: OK
@@ -4388,7 +4468,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetPaymentOptionsForSellingEDalerBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetPaymentOptionsForSellingEDalerBody'
         required: true
@@ -4398,7 +4478,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionInformation'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/TransactionInformation'
           description: OK
@@ -4469,7 +4549,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/InitiateBuyEDalerBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/InitiateBuyEDalerBody'
       responses:
@@ -4478,7 +4558,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionInformation'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/TransactionInformation'
           description: OK
@@ -4549,7 +4629,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/InitiateSellEDalerBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/InitiateSellEDalerBody'
       responses:
@@ -4558,7 +4638,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionInformation'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/TransactionInformation'
           description: OK
@@ -4627,7 +4707,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetTransactionInformationBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetTransactionInformationBody'
       responses:
@@ -4636,7 +4716,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionInformation'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/TransactionInformation'
           description: OK
@@ -4704,7 +4784,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetTokensBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetTokensBody'
       responses:
@@ -4713,7 +4793,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TokensResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/TokensResult'
           description: OK
@@ -4782,7 +4862,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetContractTokensBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetContractTokensBody'
       responses:
@@ -4791,7 +4871,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TokensResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/TokensResult'
           description: OK
@@ -4859,7 +4939,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetCreationAttributesBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetCreationAttributesBody'
       responses:
@@ -4868,7 +4948,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreationAttributes'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/CreationAttributes'
           description: OK
@@ -4936,7 +5016,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetTokenBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetTokenBody'
       responses:
@@ -4945,7 +5025,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TokenResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/TokenResult'
           description: OK
@@ -5014,7 +5094,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetDescriptionBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetDescriptionBody'
       responses:
@@ -5023,7 +5103,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReportResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ReportResult'
           description: OK
@@ -5091,7 +5171,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AddTextNoteBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/AddTextNoteBody'
       responses:
@@ -5100,7 +5180,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NoteResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/NoteResult'
           description: OK
@@ -5168,7 +5248,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AddXmlNoteBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/AddXmlNoteBody'
       responses:
@@ -5177,7 +5257,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NoteResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/NoteResult'
           description: OK
@@ -5245,7 +5325,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetTokenEventsBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetTokenEventsBody'
       responses:
@@ -5254,7 +5334,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EventsResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/EventsResult'
           description: OK
@@ -5322,7 +5402,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetCurrentStateBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/GetCurrentStateBody'
       responses:
@@ -5331,7 +5411,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StateResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/StateResult'
           description: OK
@@ -5400,7 +5480,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateReportBody'
-          application/xml:
+          text/xml:
             schema:
               $ref: '#/components/schemas/CreateReportBody'
       responses:
@@ -5409,7 +5489,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReportResult'
-            application/xml:
+            text/xml:
               schema:
                 $ref: '#/components/schemas/ReportResult'
           description: OK
@@ -5528,8 +5608,8 @@ components:
       format: uuid
       type: string
     timestamp:
-      format: date-time
-      type: string
+      format: timestamp
+      type: integer
     eMail:
       format: email
       type: string
@@ -6385,7 +6465,7 @@ components:
       example:
         jid: jid
         Stanza: Stanza
-        recieved: 2000-01-23T04:56:07.000+00:00
+        recieved: 0
         type: type
       properties:
         jid:
@@ -6401,8 +6481,8 @@ components:
             attribute: true
         recieved:
           description: When presence was received by the server of the contact.
-          format: date-time
-          type: string
+          format: timestamp
+          type: integer
           xml:
             attribute: true
         Stanza:
@@ -6535,7 +6615,7 @@ components:
         to: to
         type: type
         content: ""
-        timestamp: 2000-01-23T04:56:07.000+00:00
+        timestamp: 0
       properties:
         id:
           description: The ID of the message.
@@ -6559,8 +6639,8 @@ components:
             attribute: true
         timestamp:
           description: The timestamp of the message.
-          format: date-time
-          type: string
+          format: timestamp
+          type: integer
           xml:
             attribute: true
         content:
@@ -6587,13 +6667,13 @@ components:
           to: to
           type: type
           content: ""
-          timestamp: 2000-01-23T04:56:07.000+00:00
+          timestamp: 0
         - from: from
           id: id
           to: to
           type: type
           content: ""
-          timestamp: 2000-01-23T04:56:07.000+00:00
+          timestamp: 0
       properties:
         messages:
           items:
@@ -6623,19 +6703,19 @@ components:
         namespace: https://waher.se/Schema/BrokerAgent.xsd
     Stored:
       example:
-        created: 2000-01-23T04:56:07.000+00:00
-        updated: 2000-01-23T04:56:07.000+00:00
+        created: 0
+        updated: 6
       properties:
         created:
           description: When the information record was first created.
-          format: date-time
-          type: string
+          format: timestamp
+          type: integer
           xml:
             attribute: true
         updated:
           description: When the information record was last updated.
-          format: date-time
-          type: string
+          format: timestamp
+          type: integer
           xml:
             attribute: true
       required:
@@ -7274,6 +7354,56 @@ components:
       - serverSignature
       - status
       - xmlns
+      type: object
+    ApplyIdBody:
+      example:
+        keyId: keyId
+        keySignature: keySignature
+        Properties:
+        - name: name
+          value: value
+        - name: name
+          value: value
+        nonce: nonce
+        requestSignature: requestSignature
+      properties:
+        keyId:
+          description: Identity of key to use for signing the Identity application.
+          type: string
+          xml:
+            attribute: true
+        nonce:
+          description: "A unique random string, at least 32 characters long, with\
+            \ sufficient entropy to not be reused again. If reused, an error will\
+            \ be returned."
+          type: string
+          xml:
+            attribute: true
+        keySignature:
+          description: |
+            Cryptographic signature of the key ID, using the key password.
+          type: string
+          xml:
+            attribute: true
+        requestSignature:
+          description: |
+            Cryptographic signature of the request, using the account password.
+          type: string
+          xml:
+            attribute: true
+        Properties:
+          items:
+            $ref: '#/components/schemas/ApplyIdBody_Properties_inner'
+          nullable: true
+          type: array
+          xml:
+            wrapped: true
+      required:
+      - Properties
+      - keyId
+      - keySignature
+      - nonce
+      - requestSignature
       type: object
     AddIdAttachmentBody:
       example:
@@ -8072,7 +8202,7 @@ components:
         amount: 0.8008281904610115
         reserved: 6.027456183070403
         currency: currency
-        timestamp: 2000-01-23T04:56:07.000+00:00
+        timestamp: 1
       properties:
         amount:
           description: Current amount of eDaler that can be used.
@@ -8091,8 +8221,8 @@ components:
             attribute: true
         timestamp:
           description: Timestamp of balance statement.
-          format: date-time
-          type: string
+          format: timestamp
+          type: integer
           xml:
             attribute: true
       required:
@@ -8125,7 +8255,7 @@ components:
           amount: 0.8008281904610115
           reserved: 6.027456183070403
           currency: currency
-          timestamp: 2000-01-23T04:56:07.000+00:00
+          timestamp: 1
         Result:
           key: ""
       properties:
@@ -9028,6 +9158,21 @@ components:
       required:
       - __name
       - __ns
+      - value
+      type: object
+    ApplyIdBody_Properties_inner:
+      example:
+        name: name
+        value: value
+      properties:
+        name:
+          description: The name of the property.
+          type: string
+        value:
+          description: The value of the property.
+          type: string
+      required:
+      - name
       - value
       type: object
   securitySchemes:

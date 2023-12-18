@@ -50,6 +50,29 @@ namespace TAG.Networking.Agent.Api
         /// <returns>ApiResponse of IdentityResponse</returns>
         ApiResponse<IdentityResponse> AddIdAttachmentWithHttpInfo(AddIdAttachmentBody addIdAttachmentBody = default(AddIdAttachmentBody), int operationIndex = 0);
         /// <summary>
+        /// Apply for a legal identity
+        /// </summary>
+        /// <remarks>
+        /// Allows the client to apply for a new Legal Identity on the server. The application must be signed using one of the keys created by the client.
+        /// </remarks>
+        /// <exception cref="TAG.Networking.Agent.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="applyIdBody"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>IdentityResponseJSON</returns>
+        IdentityResponseJSON ApplyId(ApplyIdBody applyIdBody = default(ApplyIdBody), int operationIndex = 0);
+
+        /// <summary>
+        /// Apply for a legal identity
+        /// </summary>
+        /// <remarks>
+        /// Allows the client to apply for a new Legal Identity on the server. The application must be signed using one of the keys created by the client.
+        /// </remarks>
+        /// <exception cref="TAG.Networking.Agent.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="applyIdBody"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of IdentityResponseJSON</returns>
+        ApiResponse<IdentityResponseJSON> ApplyIdWithHttpInfo(ApplyIdBody applyIdBody = default(ApplyIdBody), int operationIndex = 0);
+        /// <summary>
         /// Authorize Access to Contract
         /// </summary>
         /// <remarks>
@@ -474,6 +497,31 @@ namespace TAG.Networking.Agent.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdentityResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<IdentityResponse>> AddIdAttachmentWithHttpInfoAsync(AddIdAttachmentBody addIdAttachmentBody = default(AddIdAttachmentBody), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Apply for a legal identity
+        /// </summary>
+        /// <remarks>
+        /// Allows the client to apply for a new Legal Identity on the server. The application must be signed using one of the keys created by the client.
+        /// </remarks>
+        /// <exception cref="TAG.Networking.Agent.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="applyIdBody"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of IdentityResponseJSON</returns>
+        System.Threading.Tasks.Task<IdentityResponseJSON> ApplyIdAsync(ApplyIdBody applyIdBody = default(ApplyIdBody), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Apply for a legal identity
+        /// </summary>
+        /// <remarks>
+        /// Allows the client to apply for a new Legal Identity on the server. The application must be signed using one of the keys created by the client.
+        /// </remarks>
+        /// <exception cref="TAG.Networking.Agent.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="applyIdBody"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (IdentityResponseJSON)</returns>
+        System.Threading.Tasks.Task<ApiResponse<IdentityResponseJSON>> ApplyIdWithHttpInfoAsync(ApplyIdBody applyIdBody = default(ApplyIdBody), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Authorize Access to Contract
         /// </summary>
@@ -1045,13 +1093,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1122,13 +1170,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1172,6 +1220,158 @@ namespace TAG.Networking.Agent.Api
         }
 
         /// <summary>
+        /// Apply for a legal identity Allows the client to apply for a new Legal Identity on the server. The application must be signed using one of the keys created by the client.
+        /// </summary>
+        /// <exception cref="TAG.Networking.Agent.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="applyIdBody"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>IdentityResponseJSON</returns>
+        public IdentityResponseJSON ApplyId(ApplyIdBody applyIdBody = default(ApplyIdBody), int operationIndex = 0)
+        {
+            TAG.Networking.Agent.Client.ApiResponse<IdentityResponseJSON> localVarResponse = ApplyIdWithHttpInfo(applyIdBody);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Apply for a legal identity Allows the client to apply for a new Legal Identity on the server. The application must be signed using one of the keys created by the client.
+        /// </summary>
+        /// <exception cref="TAG.Networking.Agent.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="applyIdBody"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of IdentityResponseJSON</returns>
+        public TAG.Networking.Agent.Client.ApiResponse<IdentityResponseJSON> ApplyIdWithHttpInfo(ApplyIdBody applyIdBody = default(ApplyIdBody), int operationIndex = 0)
+        {
+            TAG.Networking.Agent.Client.RequestOptions localVarRequestOptions = new TAG.Networking.Agent.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json",
+                "text/xml"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json",
+                "text/xml",
+                "text/plain"
+            };
+
+            var localVarContentType = TAG.Networking.Agent.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = TAG.Networking.Agent.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = applyIdBody;
+
+            localVarRequestOptions.Operation = "LegalApi.ApplyId";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (BearerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<IdentityResponseJSON>("/Agent/Legal/ApplyId", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ApplyId", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Apply for a legal identity Allows the client to apply for a new Legal Identity on the server. The application must be signed using one of the keys created by the client.
+        /// </summary>
+        /// <exception cref="TAG.Networking.Agent.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="applyIdBody"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of IdentityResponseJSON</returns>
+        public async System.Threading.Tasks.Task<IdentityResponseJSON> ApplyIdAsync(ApplyIdBody applyIdBody = default(ApplyIdBody), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            TAG.Networking.Agent.Client.ApiResponse<IdentityResponseJSON> localVarResponse = await ApplyIdWithHttpInfoAsync(applyIdBody, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Apply for a legal identity Allows the client to apply for a new Legal Identity on the server. The application must be signed using one of the keys created by the client.
+        /// </summary>
+        /// <exception cref="TAG.Networking.Agent.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="applyIdBody"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (IdentityResponseJSON)</returns>
+        public async System.Threading.Tasks.Task<TAG.Networking.Agent.Client.ApiResponse<IdentityResponseJSON>> ApplyIdWithHttpInfoAsync(ApplyIdBody applyIdBody = default(ApplyIdBody), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            TAG.Networking.Agent.Client.RequestOptions localVarRequestOptions = new TAG.Networking.Agent.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json", 
+                "text/xml"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json",
+                "text/xml",
+                "text/plain"
+            };
+
+            var localVarContentType = TAG.Networking.Agent.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = TAG.Networking.Agent.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = applyIdBody;
+
+            localVarRequestOptions.Operation = "LegalApi.ApplyId";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (BearerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<IdentityResponseJSON>("/Agent/Legal/ApplyId", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ApplyId", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Authorize Access to Contract Allows the client to (pre-)authorize access to (or remove authorization to access) one of its Smart Contracts (or one of the Smart Contracts for which the client is part) to a remote party. When (if) the remote party requests access to the the Smart Contract, the broker will return it automatically, if already authorized. If not authorized, a petition to access the Smart Contract will be sent to the clients of the part of the contract for manual approval. 
         /// </summary>
         /// <exception cref="TAG.Networking.Agent.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1197,13 +1397,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1274,13 +1474,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1349,13 +1549,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1426,13 +1626,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1501,13 +1701,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1578,13 +1778,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1653,13 +1853,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1730,13 +1930,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1805,13 +2005,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1882,13 +2082,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1957,13 +2157,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2034,13 +2234,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2109,13 +2309,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2186,13 +2386,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2261,13 +2461,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2338,13 +2538,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2413,13 +2613,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2490,13 +2690,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2565,13 +2765,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2642,13 +2842,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2717,13 +2917,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2794,13 +2994,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2869,13 +3069,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -2946,13 +3146,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -3021,13 +3221,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -3098,13 +3298,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -3173,13 +3373,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -3250,13 +3450,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -3325,13 +3525,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -3402,13 +3602,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -3477,13 +3677,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -3554,13 +3754,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -3629,13 +3829,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -3706,13 +3906,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 

@@ -188,7 +188,7 @@ catch (ApiException e)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml, text/plain
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details
@@ -288,8 +288,8 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml, text/plain
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details
@@ -497,7 +497,7 @@ catch (ApiException e)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml, text/plain
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details
@@ -597,8 +597,8 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml, text/plain
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details

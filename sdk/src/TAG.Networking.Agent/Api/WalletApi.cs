@@ -613,13 +613,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -690,13 +690,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -765,13 +765,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -842,13 +842,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -923,13 +923,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1006,13 +1006,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1081,13 +1081,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1158,13 +1158,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1233,13 +1233,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1310,13 +1310,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1385,13 +1385,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1462,13 +1462,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1537,13 +1537,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1614,13 +1614,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1689,13 +1689,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1766,13 +1766,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1841,13 +1841,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json",
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 
@@ -1918,13 +1918,13 @@ namespace TAG.Networking.Agent.Api
 
             string[] _contentTypes = new string[] {
                 "application/json", 
-                "application/xml"
+                "text/xml"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
                 "application/json",
-                "application/xml",
+                "text/xml",
                 "text/plain"
             };
 

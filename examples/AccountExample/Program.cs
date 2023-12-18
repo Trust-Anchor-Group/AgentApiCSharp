@@ -16,7 +16,6 @@ namespace AccountApiExample
             //Create accountApi instance based on config
             AccountApi accountApi = new AccountApi(config);
 
-
             bool isLoggedIn = false;
             bool exit = false;
             while (!exit)
@@ -46,6 +45,7 @@ namespace AccountApiExample
                                 Console.WriteLine("Enter email:");
                                 string mail = Console.ReadLine();
 
+                                //Send the request
                                 CreateAccountResponse response = await AccountHelper.CreateAccount(accountApi, apiKey, apiSecret, username, password, mail);
 
                                 //Add the bearer token to the instance
@@ -87,7 +87,9 @@ namespace AccountApiExample
                                 Console.WriteLine("Enter password:");
                                 string password = Console.ReadLine();
 
+                                //Send the request
                                 LoginResponse response = await AccountHelper.Login(accountApi, username, password);
+
                                 Console.WriteLine("Successfully logged in");
                                 Console.WriteLine("jwt: " + response.Jwt);
                                 //Calculate the expiration date of the jwt
@@ -96,7 +98,7 @@ namespace AccountApiExample
                                 Console.WriteLine("jwt expires: " + expireDate);
 
                                 //Update global configuration
-                                config.DefaultHeaders.Add("Authorization", "Bearer " + response.Jwt);
+                                config.AccessToken = response.Jwt;
                                 accountApi.Configuration = Configuration.MergeConfigurations(config, accountApi.Configuration);
                                 isLoggedIn = true;
                             }

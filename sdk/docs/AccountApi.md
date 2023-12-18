@@ -94,8 +94,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml, text/plain
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details
@@ -193,7 +193,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml, text/plain
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details
@@ -290,8 +290,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml, text/plain
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details
@@ -386,8 +386,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml, text/plain
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details
@@ -485,8 +485,8 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml, text/plain
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details
@@ -581,8 +581,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml, text/plain
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details
@@ -680,8 +680,8 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml, text/plain
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details
@@ -720,6 +720,9 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://localhost";
+            // Configure Bearer token for authorization: BearerAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
             var apiInstance = new AccountApi(config);
             var verifyEMailBody = new VerifyEMailBody(); // VerifyEMailBody | 
 
@@ -772,12 +775,12 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[BearerAuth](../README.md#BearerAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml, text/plain
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details
@@ -876,8 +879,8 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/xml
- - **Accept**: application/json, application/xml, text/plain
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml, text/plain
 
 
 ### HTTP response details

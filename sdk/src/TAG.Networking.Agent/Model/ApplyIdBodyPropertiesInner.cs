@@ -26,40 +26,50 @@ using OpenAPIDateConverter = TAG.Networking.Agent.Client.OpenAPIDateConverter;
 namespace TAG.Networking.Agent.Model
 {
     /// <summary>
-    /// Stored
+    /// ApplyIdBodyPropertiesInner
     /// </summary>
-    [DataContract(Name = "Stored")]
-    public partial class Stored : IEquatable<Stored>, IValidatableObject
+    [DataContract(Name = "ApplyIdBody_Properties_inner")]
+    public partial class ApplyIdBodyPropertiesInner : IEquatable<ApplyIdBodyPropertiesInner>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Stored" /> class.
+        /// Initializes a new instance of the <see cref="ApplyIdBodyPropertiesInner" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Stored() { }
+        protected ApplyIdBodyPropertiesInner() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Stored" /> class.
+        /// Initializes a new instance of the <see cref="ApplyIdBodyPropertiesInner" /> class.
         /// </summary>
-        /// <param name="created">When the information record was first created. (required).</param>
-        /// <param name="updated">When the information record was last updated. (required).</param>
-        public Stored(int created = default(int), int updated = default(int))
+        /// <param name="name">The name of the property. (required).</param>
+        /// <param name="value">The value of the property. (required).</param>
+        public ApplyIdBodyPropertiesInner(string name = default(string), string value = default(string))
         {
-            this.Created = created;
-            this.Updated = updated;
+            // to ensure "name" is required (not null)
+            if (name == null)
+            {
+                throw new ArgumentNullException("name is a required property for ApplyIdBodyPropertiesInner and cannot be null");
+            }
+            this.Name = name;
+            // to ensure "value" is required (not null)
+            if (value == null)
+            {
+                throw new ArgumentNullException("value is a required property for ApplyIdBodyPropertiesInner and cannot be null");
+            }
+            this.Value = value;
         }
 
         /// <summary>
-        /// When the information record was first created.
+        /// The name of the property.
         /// </summary>
-        /// <value>When the information record was first created.</value>
-        [DataMember(Name = "created", IsRequired = true, EmitDefaultValue = true)]
-        public int Created { get; set; }
+        /// <value>The name of the property.</value>
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// When the information record was last updated.
+        /// The value of the property.
         /// </summary>
-        /// <value>When the information record was last updated.</value>
-        [DataMember(Name = "updated", IsRequired = true, EmitDefaultValue = true)]
-        public int Updated { get; set; }
+        /// <value>The value of the property.</value>
+        [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
+        public string Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -68,9 +78,9 @@ namespace TAG.Networking.Agent.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Stored {\n");
-            sb.Append("  Created: ").Append(Created).Append("\n");
-            sb.Append("  Updated: ").Append(Updated).Append("\n");
+            sb.Append("class ApplyIdBodyPropertiesInner {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -91,15 +101,15 @@ namespace TAG.Networking.Agent.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Stored);
+            return this.Equals(input as ApplyIdBodyPropertiesInner);
         }
 
         /// <summary>
-        /// Returns true if Stored instances are equal
+        /// Returns true if ApplyIdBodyPropertiesInner instances are equal
         /// </summary>
-        /// <param name="input">Instance of Stored to be compared</param>
+        /// <param name="input">Instance of ApplyIdBodyPropertiesInner to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Stored input)
+        public bool Equals(ApplyIdBodyPropertiesInner input)
         {
             if (input == null)
             {
@@ -107,12 +117,14 @@ namespace TAG.Networking.Agent.Model
             }
             return 
                 (
-                    this.Created == input.Created ||
-                    this.Created.Equals(input.Created)
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Updated == input.Updated ||
-                    this.Updated.Equals(input.Updated)
+                    this.Value == input.Value ||
+                    (this.Value != null &&
+                    this.Value.Equals(input.Value))
                 );
         }
 
@@ -125,8 +137,14 @@ namespace TAG.Networking.Agent.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Created.GetHashCode();
-                hashCode = (hashCode * 59) + this.Updated.GetHashCode();
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.Value != null)
+                {
+                    hashCode = (hashCode * 59) + this.Value.GetHashCode();
+                }
                 return hashCode;
             }
         }
