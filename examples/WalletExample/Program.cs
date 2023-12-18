@@ -53,68 +53,124 @@ namespace WalletExample
 
         static async Task LoggedInMenu()
         {
-            bool exit = false;
-            while (!exit)
+            try
             {
-                Console.WriteLine("1. Apply for a legal id");
-                Console.WriteLine("2. Check Identity Application Status");
-                Console.WriteLine("3. Exit");
+                await CheckLegalIdentityStatus();
+                Console.WriteLine("1. Get wallet balance");
+                Console.WriteLine("2. Exit");
                 Console.Write("Enter your choice: ");
 
                 string choice = Console.ReadLine();
-                try
+
+                switch (choice)
                 {
-                    switch (choice)
-                    {
-                        case "1":
-                            await ApplyForLegalId();
-                            break;
-                        case "2":
-                            await PrintIdentityStatus();
-                            break;
-                        default:
-                            break;
-                    }
+                    case "1":
+                        await GetWalletBalance();
+                        break;
+                    case "2":
+                        break;
                 }
-                catch (ApiException e)
-                {
-                    Console.WriteLine("An error occured: " + e.Message);
-                }
+            }
+            catch (ApiException e)
+            {
+                Console.WriteLine("An error occured: " + e.Message);
             }
         }
 
+
+        static async Task GetWalletBalance()
+        {
+            WalletApi api = new WalletApi(GlobalConfig.instance);
+            GetBalanceResponse response = await api.GetBalanceAsync(new object());
+            Console.WriteLine("Balance: " + response.Amount + " " + response.Currency);
+        }
+
+        static async Task CheckLegalIdentityStatus()
+        {
+            //request all identities connected to the account
+            LegalApi api = new LegalApi(GlobalConfig.instance);
+            IdentitiesResponseJSON response = await api.GetIdentitiesAsync(new GetIdentitiesBody(0, 10));
+
+            int numberOfApprovedIdentities = 0;
+
+            //check status of all identities
+            foreach (var identity in response.Identities)
+            {
+                //if the identity is still in the created state, wait for it to be processed
+                if (identity.Status.State == "Created")
+                {
+                    Console.WriteLine("Identity application not processed yet");
+                    await WaitForLegalIdentityApplication(identity.Id);
+                    await CheckLegalIdentityStatus(); //restart the process
+                    return;
+                }
+
+                //if the identity is in the approved state, return
+                if (identity.Status.State == "Approved")
+                {
+                    numberOfApprovedIdentities++;
+                }   
+            }
+
+            if(numberOfApprovedIdentities == 0)
+            {
+                Console.WriteLine("No approved identities found");
+                await ApplyForLegalId();
+                await CheckLegalIdentityStatus(); //restart the process
+
+            }
+            else
+            {
+                Console.WriteLine("Approved identity found");
+            }
+        }
+
+        static async Task WaitForLegalIdentityApplication(string id)
+        { try
+            {
+                Console.WriteLine("Waiting for identity application to be processed");
+                LegalApi api = new LegalApi(GlobalConfig.instance);
+                while (true)
+                {
+                    //request the identity
+                    IdentityResponseJSON response = await api.GetIdentityAsync(new GetIdentityBody(id));
+
+                    //if the identity is in the approved state, return
+                    if (response.Identity.Status.State == "Approved")
+                    {
+                        Console.WriteLine("Identity application approved");
+                        return;
+                    }
+
+                    //if the identity is in the rejected state, return
+                    if (response.Identity.Status.State == "Rejected")
+                    {
+                        Console.WriteLine("Identity application rejected");
+                        return;
+                    }
+
+                    //wait 5 seconds before checking again
+                    await Task.Delay(5000);
+                }
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine("An error occured: " + ex.Message);
+            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         static async Task ApplyForLegalId()
         {
-            LegalApi api = new LegalApi(GlobalConfig.instance);
-
+            
         }
 
-        /// <summary>
-        /// Fetches all identities connected to an account and print the status about the latest application
-        /// </summary>
-        static async Task PrintIdentityStatus()
-        {
-            LegalApi api = new LegalApi(GlobalConfig.instance);
-            IdentitiesResponseJSON response = await api.GetIdentitiesAsync(new GetIdentitiesBody(0, 10));
 
 
-            if (response.Identities.Count == 0)
-            {
-                Console.WriteLine("No identities found");
-                return;
-            }
 
-            //sort response.Identities based on their creation date
-            response.Identities.Sort((x, y) => x.Status.Created.CompareTo(y.Status.Created));
 
-            //Print information about the latest identity
-            Console.WriteLine("Identity: " + response.Identities[0].Id);
-            Console.WriteLine("Status: " + response.Identities[0].Status.State);
-        }
 
         /// <summary>
         /// Handles the account creation process
