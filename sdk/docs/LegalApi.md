@@ -5,6 +5,7 @@ All URIs are relative to *https://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**AddIdAttachment**](LegalApi.md#addidattachment) | **POST** /Agent/Legal/AddIdAttachment | Add attachment to legal id application (NOT IMPLEMENTED) |
+| [**ApplyId**](LegalApi.md#applyid) | **POST** /Agent/Legal/ApplyId | Apply for a legal identity |
 | [**AuthorizeAccessToContract**](LegalApi.md#authorizeaccesstocontract) | **POST** /Agent/Legal/AuthorizeAccessToContract | Authorize Access to Contract |
 | [**AuthorizeAccessToId**](LegalApi.md#authorizeaccesstoid) | **POST** /Agent/Legal/AuthorizeAccessToId | Authorize Access to ID |
 | [**CreateContract**](LegalApi.md#createcontract) | **POST** /Agent/Legal/CreateContract | Create Contract |
@@ -99,6 +100,107 @@ catch (ApiException e)
 ### Return type
 
 [**IdentityResponse**](IdentityResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml, text/plain
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad request, most probably due to the content sent in the request not conforming to the specification. |  -  |
+| **401** | Unauthorized access to a resource was prevented. Client must login first. |  -  |
+| **403** | Forbidden access to resource was stopped. Client does not have sufficient privileges to access resource or perform requested action, or access is done using unencrypted, or a connection that is not sufficiently encrypted. |  -  |
+| **404** | Resource, or item referenced in request, was not found. |  -  |
+| **405** | Method not allowed. The method used in the request is not allowed for the resource. |  -  |
+| **406** | Content sent, or content requested in a format that is not supported by the resource. |  -  |
+| **429** | Too many requests have been made, for this resource, or any of the referenced resources in the request. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="applyid"></a>
+# **ApplyId**
+> IdentityResponseJSON ApplyId (ApplyIdBody applyIdBody = null)
+
+Apply for a legal identity
+
+Allows the client to apply for a new Legal Identity on the server. The application must be signed using one of the keys created by the client.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using TAG.Networking.Agent.Api;
+using TAG.Networking.Agent.Client;
+using TAG.Networking.Agent.Model;
+
+namespace Example
+{
+    public class ApplyIdExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://localhost";
+            // Configure Bearer token for authorization: BearerAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new LegalApi(config);
+            var applyIdBody = new ApplyIdBody(); // ApplyIdBody |  (optional) 
+
+            try
+            {
+                // Apply for a legal identity
+                IdentityResponseJSON result = apiInstance.ApplyId(applyIdBody);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling LegalApi.ApplyId: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ApplyIdWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Apply for a legal identity
+    ApiResponse<IdentityResponseJSON> response = apiInstance.ApplyIdWithHttpInfo(applyIdBody);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling LegalApi.ApplyIdWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **applyIdBody** | [**ApplyIdBody**](ApplyIdBody.md) |  | [optional]  |
+
+### Return type
+
+[**IdentityResponseJSON**](IdentityResponseJSON.md)
 
 ### Authorization
 

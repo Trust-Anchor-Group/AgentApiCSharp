@@ -2579,6 +2579,84 @@ paths:
       summary: Get Public Key
       tags:
       - Crypto
+  /Agent/Legal/ApplyId:
+    post:
+      description: Allows the client to apply for a new Legal Identity on the server.
+        The application must be signed using one of the keys created by the client.
+      operationId: applyId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplyIdBody'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ApplyIdBody'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityResponseJSON'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/IdentityResponse'
+          description: OK
+        "400":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Bad request, most probably due to the content sent in the\
+            \ request not conforming to the specification."
+        "401":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Unauthorized access to a resource was prevented. Client must
+            login first.
+        "403":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Forbidden access to resource was stopped. Client does not\
+            \ have sufficient privileges to access resource or perform requested action,\
+            \ or access is done using unencrypted, or a connection that is not sufficiently\
+            \ encrypted."
+        "404":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Resource, or item referenced in request, was not found."
+        "405":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Method not allowed. The method used in the request is not allowed
+            for the resource.
+        "406":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Content sent, or content requested in a format that is not\
+            \ supported by the resource."
+        "429":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: "Too many requests have been made, for this resource, or any\
+            \ of the referenced resources in the request."
+      security:
+      - BearerAuth: []
+      summary: Apply for a legal identity
+      tags:
+      - Legal
   /Agent/Legal/ValidatePNr:
     post:
       description: Allows the client to validate a personal number before using it
@@ -7277,6 +7355,56 @@ components:
       - status
       - xmlns
       type: object
+    ApplyIdBody:
+      example:
+        keyId: keyId
+        keySignature: keySignature
+        Properties:
+        - name: name
+          value: value
+        - name: name
+          value: value
+        nonce: nonce
+        requestSignature: requestSignature
+      properties:
+        keyId:
+          description: Identity of key to use for signing the Identity application.
+          type: string
+          xml:
+            attribute: true
+        nonce:
+          description: "A unique random string, at least 32 characters long, with\
+            \ sufficient entropy to not be reused again. If reused, an error will\
+            \ be returned."
+          type: string
+          xml:
+            attribute: true
+        keySignature:
+          description: |
+            Cryptographic signature of the key ID, using the key password.
+          type: string
+          xml:
+            attribute: true
+        requestSignature:
+          description: |
+            Cryptographic signature of the request, using the account password.
+          type: string
+          xml:
+            attribute: true
+        Properties:
+          items:
+            $ref: '#/components/schemas/ApplyIdBody_Properties_inner'
+          nullable: true
+          type: array
+          xml:
+            wrapped: true
+      required:
+      - Properties
+      - keyId
+      - keySignature
+      - nonce
+      - requestSignature
+      type: object
     AddIdAttachmentBody:
       example:
         attachmentFileName: attachmentFileName
@@ -9030,6 +9158,21 @@ components:
       required:
       - __name
       - __ns
+      - value
+      type: object
+    ApplyIdBody_Properties_inner:
+      example:
+        name: name
+        value: value
+      properties:
+        name:
+          description: The name of the property.
+          type: string
+        value:
+          description: The value of the property.
+          type: string
+      required:
+      - name
       - value
       type: object
   securitySchemes:

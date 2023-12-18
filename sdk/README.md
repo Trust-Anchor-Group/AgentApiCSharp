@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *CryptoApi* | [**GetAlgorithms**](docs/CryptoApi.md#getalgorithms) | **POST** /Agent/Crypto/GetAlgorithms | Get Algorithms
 *CryptoApi* | [**GetPublicKey**](docs/CryptoApi.md#getpublickey) | **POST** /Agent/Crypto/GetPublicKey | Get Public Key
 *LegalApi* | [**AddIdAttachment**](docs/LegalApi.md#addidattachment) | **POST** /Agent/Legal/AddIdAttachment | Add attachment to legal id application (NOT IMPLEMENTED)
+*LegalApi* | [**ApplyId**](docs/LegalApi.md#applyid) | **POST** /Agent/Legal/ApplyId | Apply for a legal identity
 *LegalApi* | [**AuthorizeAccessToContract**](docs/LegalApi.md#authorizeaccesstocontract) | **POST** /Agent/Legal/AuthorizeAccessToContract | Authorize Access to Contract
 *LegalApi* | [**AuthorizeAccessToId**](docs/LegalApi.md#authorizeaccesstoid) | **POST** /Agent/Legal/AuthorizeAccessToId | Authorize Access to ID
 *LegalApi* | [**CreateContract**](docs/LegalApi.md#createcontract) | **POST** /Agent/Legal/CreateContract | Create Contract
@@ -185,6 +186,8 @@ Class | Method | HTTP request | Description
  - [Model.AddXmlNoteBody](docs/AddXmlNoteBody.md)
  - [Model.Algorithm](docs/Algorithm.md)
  - [Model.AlgorithmsResult](docs/AlgorithmsResult.md)
+ - [Model.ApplyIdBody](docs/ApplyIdBody.md)
+ - [Model.ApplyIdBodyPropertiesInner](docs/ApplyIdBodyPropertiesInner.md)
  - [Model.AuthorizeAccessToContractBody](docs/AuthorizeAccessToContractBody.md)
  - [Model.AuthorizeAccessToIdBody](docs/AuthorizeAccessToIdBody.md)
  - [Model.ContentResponse](docs/ContentResponse.md)

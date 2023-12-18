@@ -67,6 +67,18 @@ namespace TAG.Networking.Agent.Test.Api
         }
 
         /// <summary>
+        /// Test ApplyId
+        /// </summary>
+        [Fact]
+        public void ApplyIdTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //ApplyIdBody applyIdBody = null;
+            //var response = instance.ApplyId(applyIdBody);
+            //Assert.IsType<IdentityResponseJSON>(response);
+        }
+
+        /// <summary>
         /// Test AuthorizeAccessToContract
         /// </summary>
         [Fact]

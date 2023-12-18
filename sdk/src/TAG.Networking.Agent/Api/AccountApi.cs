@@ -1152,9 +1152,6 @@ namespace TAG.Networking.Agent.Api
                 }
             }
 
-            if (localVarResponse.StatusCode == 0)
-                throw new ApiException(0, localVarResponse.ErrorText);
-
             return localVarResponse;
         }
 

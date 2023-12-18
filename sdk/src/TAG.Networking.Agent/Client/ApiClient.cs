@@ -532,6 +532,8 @@ namespace TAG.Networking.Agent.Client
                         result.Cookies.Add(cookie);
                     }
                 }
+                if (response.StatusCode == 0)
+                    throw new ApiException(0, response.ErrorMessage);
                 return result;
             }
         }
@@ -618,6 +620,8 @@ namespace TAG.Networking.Agent.Client
                         result.Cookies.Add(cookie);
                     }
                 }
+                if (response.StatusCode == 0)
+                    throw new ApiException(0, response.ErrorMessage);
                 return result;
             }
         }
