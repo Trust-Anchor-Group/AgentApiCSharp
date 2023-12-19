@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TAG.Networking.Agent.Client;
+using Neuron.Agent.Client;
 
 namespace WalletExample
 {
