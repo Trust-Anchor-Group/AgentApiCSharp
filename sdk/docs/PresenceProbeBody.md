@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.PresenceProbeBody
+# Neuron.Agent.Model.PresenceProbeBody
 
 ## Properties
 

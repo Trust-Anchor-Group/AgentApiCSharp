@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.EventsResult
+# Neuron.Agent.Model.EventsResult
 
 ## Properties
 

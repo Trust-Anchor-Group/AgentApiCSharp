@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.ReportFormat
+# Neuron.Agent.Model.ReportFormat
 Format of report.
 
 ## Properties

@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.GetPaymentOptionsForBuyingEDalerBody
+# Neuron.Agent.Model.GetPaymentOptionsForBuyingEDalerBody
 
 ## Properties
 

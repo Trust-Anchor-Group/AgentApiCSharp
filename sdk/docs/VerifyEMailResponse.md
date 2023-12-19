@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.VerifyEMailResponse
+# Neuron.Agent.Model.VerifyEMailResponse
 
 ## Properties
 

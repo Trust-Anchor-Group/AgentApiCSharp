@@ -1,4 +1,4 @@
-# TAG.Networking.Agent - the C# library for the Agent API
+# Neuron.Agent - the C# library for the Agent API
 
 The Neuron® publishes an Agent API that can be used by agents that do not wish to, or are able
 to, connect to the Neuron® via any of the XMPP bindings available, such as standard binary 
@@ -44,9 +44,9 @@ Generate the DLL using your preferred tool (e.g. `dotnet build`)
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
 ```csharp
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 ```
 <a id="usage"></a>
 ## Usage
@@ -65,9 +65,9 @@ c.Proxy = webProxy;
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {

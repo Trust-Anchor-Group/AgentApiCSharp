@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.QueryResultXml
+# Neuron.Agent.Model.QueryResultXml
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.GetPublicKeyBody
+# Neuron.Agent.Model.GetPublicKeyBody
 
 ## Properties
 

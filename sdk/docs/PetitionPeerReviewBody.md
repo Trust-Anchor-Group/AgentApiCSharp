@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.PetitionPeerReviewBody
+# Neuron.Agent.Model.PetitionPeerReviewBody
 
 ## Properties
 

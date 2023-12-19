@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.IdentityJson
+# Neuron.Agent.Model.IdentityJson
 
 ## Properties
 

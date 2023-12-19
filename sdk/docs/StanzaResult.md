@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.StanzaResult
+# Neuron.Agent.Model.StanzaResult
 
 ## Properties
 

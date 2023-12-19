@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Api.TokensApi
+# Neuron.Agent.Api.TokensApi
 
 All URIs are relative to *https://localhost*
 
@@ -25,9 +25,9 @@ Adds a text note to a token.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -126,9 +126,9 @@ Adds an XML note to a token.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -227,9 +227,9 @@ Gets a list of tokens on the Neuron® owned by the account, for a specific contr
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -328,9 +328,9 @@ Gets the creation attributes for a specific token.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -429,9 +429,9 @@ Creates a report relating to a state machine associated with a token.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -530,9 +530,9 @@ Gets information about a specific token.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -631,9 +631,9 @@ Gets a list of events for a specific token.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -732,9 +732,9 @@ Gets a list of tokens on the Neuron® owned by the account.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {

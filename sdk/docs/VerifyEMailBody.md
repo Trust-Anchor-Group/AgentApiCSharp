@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.VerifyEMailBody
+# Neuron.Agent.Model.VerifyEMailBody
 
 ## Properties
 

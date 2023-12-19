@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.GetTransactionInformationBody
+# Neuron.Agent.Model.GetTransactionInformationBody
 
 ## Properties
 

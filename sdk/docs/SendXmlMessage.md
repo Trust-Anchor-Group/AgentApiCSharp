@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.SendXmlMessage
+# Neuron.Agent.Model.SendXmlMessage
 
 ## Properties
 

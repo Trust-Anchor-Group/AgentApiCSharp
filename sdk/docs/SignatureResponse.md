@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.SignatureResponse
+# Neuron.Agent.Model.SignatureResponse
 
 ## Properties
 

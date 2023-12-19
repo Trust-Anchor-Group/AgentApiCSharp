@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.GetContractTokensBody
+# Neuron.Agent.Model.GetContractTokensBody
 
 ## Properties
 

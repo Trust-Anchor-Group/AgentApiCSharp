@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Api.StorageApi
+# Neuron.Agent.Api.StorageApi
 
 All URIs are relative to *https://localhost*
 
@@ -21,9 +21,9 @@ Deletes content from path
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -116,9 +116,9 @@ Get content from path
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -217,9 +217,9 @@ Loads private XML data from the server.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -316,9 +316,9 @@ Upload new content using form data
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -419,9 +419,9 @@ Upload new content with Content ID
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -526,9 +526,9 @@ Saves private XML data to the server.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {

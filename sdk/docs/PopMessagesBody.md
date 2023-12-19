@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.PopMessagesBody
+# Neuron.Agent.Model.PopMessagesBody
 
 ## Properties
 

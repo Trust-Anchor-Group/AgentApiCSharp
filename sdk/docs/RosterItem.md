@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.RosterItem
+# Neuron.Agent.Model.RosterItem
 
 ## Properties
 

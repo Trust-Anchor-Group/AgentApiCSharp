@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.GetCurrentStateBody
+# Neuron.Agent.Model.GetCurrentStateBody
 
 ## Properties
 

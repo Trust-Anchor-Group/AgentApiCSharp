@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.Algorithm
+# Neuron.Agent.Model.Algorithm
 
 ## Properties
 

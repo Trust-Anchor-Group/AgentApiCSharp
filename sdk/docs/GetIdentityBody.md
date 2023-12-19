@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.GetIdentityBody
+# Neuron.Agent.Model.GetIdentityBody
 
 ## Properties
 

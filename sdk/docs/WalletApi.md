@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Api.WalletApi
+# Neuron.Agent.Api.WalletApi
 
 All URIs are relative to *https://localhost*
 
@@ -26,9 +26,9 @@ Allows the client to retrieve information about the current state of its wallet.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -127,9 +127,9 @@ Allows the client to initiate the process of getting payment options for buying 
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -228,9 +228,9 @@ Allows the client to initiate the process of getting payment options for selling
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -329,9 +329,9 @@ Allows the client to retrieve a list of available service providers that can be 
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -430,9 +430,9 @@ Allows the client to retrieve a list of available service providers that can be 
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -531,9 +531,9 @@ Allows the client to get updated transaction information from the server. It als
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -632,9 +632,9 @@ Allows the client to initiate the process of buying eDaler, using a service prov
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -733,9 +733,9 @@ Allows the client to initiate the process of selling eDaler, using a service pro
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -834,9 +834,9 @@ Allows the client to process an eDaler URI.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {

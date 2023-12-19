@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.ProvidersResponse
+# Neuron.Agent.Model.ProvidersResponse
 
 ## Properties
 

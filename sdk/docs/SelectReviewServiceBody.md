@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.SelectReviewServiceBody
+# Neuron.Agent.Model.SelectReviewServiceBody
 
 ## Properties
 

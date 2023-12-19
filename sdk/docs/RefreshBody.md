@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.RefreshBody
+# Neuron.Agent.Model.RefreshBody
 
 ## Properties
 

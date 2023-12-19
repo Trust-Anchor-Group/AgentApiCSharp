@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.GetServiceProvidersForIdReviewBody
+# Neuron.Agent.Model.GetServiceProvidersForIdReviewBody
 
 ## Properties
 

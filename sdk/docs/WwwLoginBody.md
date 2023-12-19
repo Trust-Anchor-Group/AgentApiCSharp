@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.WwwLoginBody
+# Neuron.Agent.Model.WwwLoginBody
 
 ## Properties
 

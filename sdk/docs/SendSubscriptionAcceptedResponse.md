@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.SendSubscriptionAcceptedResponse
+# Neuron.Agent.Model.SendSubscriptionAcceptedResponse
 
 ## Properties
 

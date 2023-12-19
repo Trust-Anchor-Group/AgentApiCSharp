@@ -1,6 +1,6 @@
-﻿using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+﻿using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace ApiUsageExample
 {
@@ -11,7 +11,7 @@ namespace ApiUsageExample
             // In order to be able to call an endpoint we need an api object. Theses are diffrent depending on the path of the endpoint.
             //  e.g. the endpoint /Agent/Account/login is called with the AccountApi object.
             //  The AccountApi object is created using a Configuration, the configuration contains the base path (domain) and information such as default headers (authorization)
-            var config = new Configuration { BasePath = "https://lab.tagroot.io" };
+            var config = new Configuration { BasePath = "http://localhost" };
             var accountApi = new AccountApi(config);
 
             // Updating the configuration here, won't change the configuration in the accountApi object.

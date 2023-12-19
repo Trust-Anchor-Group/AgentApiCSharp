@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.IdentityJsonStatus
+# Neuron.Agent.Model.IdentityJsonStatus
 The status object of the identity.
 
 ## Properties

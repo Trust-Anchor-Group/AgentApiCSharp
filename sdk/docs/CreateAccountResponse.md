@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.CreateAccountResponse
+# Neuron.Agent.Model.CreateAccountResponse
 
 ## Properties
 

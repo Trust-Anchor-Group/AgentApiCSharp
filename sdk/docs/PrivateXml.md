@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.PrivateXml
+# Neuron.Agent.Model.PrivateXml
 
 ## Properties
 

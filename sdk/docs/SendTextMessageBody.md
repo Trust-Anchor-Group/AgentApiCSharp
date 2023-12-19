@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.SendTextMessageBody
+# Neuron.Agent.Model.SendTextMessageBody
 
 ## Properties
 

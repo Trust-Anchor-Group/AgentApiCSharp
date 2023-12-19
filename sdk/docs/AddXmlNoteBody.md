@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.AddXmlNoteBody
+# Neuron.Agent.Model.AddXmlNoteBody
 
 ## Properties
 

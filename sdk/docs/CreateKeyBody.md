@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.CreateKeyBody
+# Neuron.Agent.Model.CreateKeyBody
 
 ## Properties
 

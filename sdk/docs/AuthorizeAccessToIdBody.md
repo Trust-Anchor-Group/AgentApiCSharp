@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.AuthorizeAccessToIdBody
+# Neuron.Agent.Model.AuthorizeAccessToIdBody
 
 ## Properties
 

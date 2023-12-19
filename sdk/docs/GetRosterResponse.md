@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.GetRosterResponse
+# Neuron.Agent.Model.GetRosterResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.SendPresenceSubscriptionBody
+# Neuron.Agent.Model.SendPresenceSubscriptionBody
 
 ## Properties
 

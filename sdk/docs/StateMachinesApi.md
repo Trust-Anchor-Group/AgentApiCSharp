@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Api.StateMachinesApi
+# Neuron.Agent.Api.StateMachinesApi
 
 All URIs are relative to *https://localhost*
 
@@ -19,9 +19,9 @@ Creates a report relating to a state machine associated with a token.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {
@@ -120,9 +120,9 @@ Gets the current state of a state machine, associated with a token.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Api;
+using Neuron.Agent.Client;
+using Neuron.Agent.Model;
 
 namespace Example
 {

@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.AuthorizeAccessToContractBody
+# Neuron.Agent.Model.AuthorizeAccessToContractBody
 
 ## Properties
 

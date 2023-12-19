@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.LoginResponse
+# Neuron.Agent.Model.LoginResponse
 
 ## Properties
 

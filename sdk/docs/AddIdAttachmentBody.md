@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.AddIdAttachmentBody
+# Neuron.Agent.Model.AddIdAttachmentBody
 
 ## Properties
 

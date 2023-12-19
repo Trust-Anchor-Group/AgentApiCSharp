@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.ProcessEDalerUriBody
+# Neuron.Agent.Model.ProcessEDalerUriBody
 
 ## Properties
 

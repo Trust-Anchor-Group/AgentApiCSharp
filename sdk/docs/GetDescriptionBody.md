@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.GetDescriptionBody
+# Neuron.Agent.Model.GetDescriptionBody
 
 ## Properties
 

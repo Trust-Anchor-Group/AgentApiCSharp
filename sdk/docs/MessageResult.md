@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.MessageResult
+# Neuron.Agent.Model.MessageResult
 
 ## Properties
 

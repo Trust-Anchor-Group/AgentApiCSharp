@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.DomainInfoResponse
+# Neuron.Agent.Model.DomainInfoResponse
 
 ## Properties
 

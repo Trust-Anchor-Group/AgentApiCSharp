@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.IdentityJsonClientPublicKey
+# Neuron.Agent.Model.IdentityJsonClientPublicKey
 The public key object of the client.
 
 ## Properties

@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.PetitionSignatureBody
+# Neuron.Agent.Model.PetitionSignatureBody
 
 ## Properties
 

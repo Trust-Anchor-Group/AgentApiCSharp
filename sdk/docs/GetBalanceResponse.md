@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.GetBalanceResponse
+# Neuron.Agent.Model.GetBalanceResponse
 
 ## Properties
 

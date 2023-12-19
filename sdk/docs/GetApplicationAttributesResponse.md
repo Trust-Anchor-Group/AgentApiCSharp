@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.GetApplicationAttributesResponse
+# Neuron.Agent.Model.GetApplicationAttributesResponse
 
 ## Properties
 

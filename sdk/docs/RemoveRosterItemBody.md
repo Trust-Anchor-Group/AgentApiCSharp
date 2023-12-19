@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.RemoveRosterItemBody
+# Neuron.Agent.Model.RemoveRosterItemBody
 
 ## Properties
 

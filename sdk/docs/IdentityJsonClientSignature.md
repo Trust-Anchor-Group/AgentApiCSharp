@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.IdentityJsonClientSignature
+# Neuron.Agent.Model.IdentityJsonClientSignature
 The signature object of the client.
 
 ## Properties

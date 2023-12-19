@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.Visibility
+# Neuron.Agent.Model.Visibility
 
 ## Properties
 

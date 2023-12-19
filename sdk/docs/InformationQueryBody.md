@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.InformationQueryBody
+# Neuron.Agent.Model.InformationQueryBody
 
 ## Properties
 

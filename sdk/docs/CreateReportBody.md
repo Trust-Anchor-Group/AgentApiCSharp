@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.CreateReportBody
+# Neuron.Agent.Model.CreateReportBody
 
 ## Properties
 

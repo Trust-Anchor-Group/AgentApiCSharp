@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.InitiateSellEDalerBody
+# Neuron.Agent.Model.InitiateSellEDalerBody
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.SendFormattedMessage
+# Neuron.Agent.Model.SendFormattedMessage
 
 ## Properties
 

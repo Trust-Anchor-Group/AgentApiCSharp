@@ -1,4 +1,4 @@
-# TAG.Networking.Agent.Model.ValidatePNrResponse
+# Neuron.Agent.Model.ValidatePNrResponse
 
 ## Properties
 
