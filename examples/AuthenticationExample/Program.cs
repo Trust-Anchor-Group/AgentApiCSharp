@@ -1,8 +1,8 @@
-﻿using TAG.Networking.Agent.Api;
-using TAG.Networking.Agent.Client;
+﻿using Neuron.Agent.Api;
+using Neuron.Agent.Client;
 using System;
 using System.Threading.Tasks;
-using TAG.Networking.Agent.Model;
+using Neuron.Agent.Model;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -14,7 +14,7 @@ namespace AuthenticationExample
         {
             // Set up API configuration
             Configuration config = new Configuration();
-            config.BasePath = "https://neuron.saunter.tech"; // Replace with actual API base path
+            config.BasePath = "http://localhost"; // Replace with actual API base path
 
             // Initialize the API client
             AccountApi accountApi = new AccountApi(config);
@@ -33,6 +33,9 @@ namespace AuthenticationExample
                 // the Agent API uses JWT (JSON Web Token) authentication
                 // For future requests we add the JWT as bearer token in the Authorization header.
                 config.DefaultHeaders.Add("Authorization", "Bearer " + response.Jwt);
+                //Optional: 
+                //config.AccessToken = response.Jwt;
+                
                 //Merge Config changes in order to reuse the AccountApi Instance
                 accountApi.Configuration = Configuration.MergeConfigurations(config, accountApi.Configuration);
 

@@ -4,7 +4,7 @@ This SDK provides a convenient way to interact with the AgentAPI using C#. It is
 
 ## Notes
 
-Currently the SDK is not ready for production use, mainly because the SDK has not been thoroughly tested. The OpenAPI 3.0 specification used for this SDK can be found at the [AgentApiYaml repository](https://github.com/Trust-Anchor-Group/AgentApiYaml)
+The OpenAPI 3.0 specification used for this SDK can be found at the [AgentApiYaml repository](https://github.com/Trust-Anchor-Group/AgentApiYaml)
 
 ## Installation
 
