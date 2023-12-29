@@ -41,11 +41,11 @@ namespace Neuron.Agent.Model
         /// </summary>
         /// <param name="localName">The local name of the algorithm. (required).</param>
         /// <param name="varNamespace">The namespace of the algorithm. (required).</param>
-        /// <param name="secuirtyStrength">The security strength of the algorithm. (required).</param>
+        /// <param name="securityStrength">The security strength of the algorithm. (required).</param>
         /// <param name="safe">Whether the algorithm is considered safe or not. (required).</param>
         /// <param name="slow">Whether the algorithm is considered slow or not. (required).</param>
         /// <param name="score">The score of the algorithm. (required).</param>
-        public Algorithm(string localName = default(string), string varNamespace = default(string), int secuirtyStrength = default(int), bool safe = default(bool), bool slow = default(bool), int score = default(int))
+        public Algorithm(string localName = default(string), string varNamespace = default(string), int securityStrength = default(int), bool safe = default(bool), bool slow = default(bool), int score = default(int))
         {
             // to ensure "localName" is required (not null)
             if (localName == null)
@@ -59,7 +59,7 @@ namespace Neuron.Agent.Model
                 throw new ArgumentNullException("varNamespace is a required property for Algorithm and cannot be null");
             }
             this.VarNamespace = varNamespace;
-            this.SecuirtyStrength = secuirtyStrength;
+            this.SecurityStrength = securityStrength;
             this.Safe = safe;
             this.Slow = slow;
             this.Score = score;
@@ -83,8 +83,8 @@ namespace Neuron.Agent.Model
         /// The security strength of the algorithm.
         /// </summary>
         /// <value>The security strength of the algorithm.</value>
-        [DataMember(Name = "secuirtyStrength", IsRequired = true, EmitDefaultValue = true)]
-        public int SecuirtyStrength { get; set; }
+        [DataMember(Name = "securityStrength", IsRequired = true, EmitDefaultValue = true)]
+        public int SecurityStrength { get; set; }
 
         /// <summary>
         /// Whether the algorithm is considered safe or not.
@@ -117,7 +117,7 @@ namespace Neuron.Agent.Model
             sb.Append("class Algorithm {\n");
             sb.Append("  LocalName: ").Append(LocalName).Append("\n");
             sb.Append("  VarNamespace: ").Append(VarNamespace).Append("\n");
-            sb.Append("  SecuirtyStrength: ").Append(SecuirtyStrength).Append("\n");
+            sb.Append("  SecurityStrength: ").Append(SecurityStrength).Append("\n");
             sb.Append("  Safe: ").Append(Safe).Append("\n");
             sb.Append("  Slow: ").Append(Slow).Append("\n");
             sb.Append("  Score: ").Append(Score).Append("\n");
@@ -167,8 +167,8 @@ namespace Neuron.Agent.Model
                     this.VarNamespace.Equals(input.VarNamespace))
                 ) && 
                 (
-                    this.SecuirtyStrength == input.SecuirtyStrength ||
-                    this.SecuirtyStrength.Equals(input.SecuirtyStrength)
+                    this.SecurityStrength == input.SecurityStrength ||
+                    this.SecurityStrength.Equals(input.SecurityStrength)
                 ) && 
                 (
                     this.Safe == input.Safe ||
@@ -201,7 +201,7 @@ namespace Neuron.Agent.Model
                 {
                     hashCode = (hashCode * 59) + this.VarNamespace.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.SecuirtyStrength.GetHashCode();
+                hashCode = (hashCode * 59) + this.SecurityStrength.GetHashCode();
                 hashCode = (hashCode * 59) + this.Safe.GetHashCode();
                 hashCode = (hashCode * 59) + this.Slow.GetHashCode();
                 hashCode = (hashCode * 59) + this.Score.GetHashCode();
