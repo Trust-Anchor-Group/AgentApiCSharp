@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationExample", "Au
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neuron.Agent", "..\sdk\src\Neuron.Agent\Neuron.Agent.csproj", "{4FB4BDB0-8B32-427A-B3EE-A6AD2CD1ED27}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WalletExample", "WalletExample\WalletExample.csproj", "{34D46720-4E29-41B2-85BA-8CA0A6374D73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4FB4BDB0-8B32-427A-B3EE-A6AD2CD1ED27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FB4BDB0-8B32-427A-B3EE-A6AD2CD1ED27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FB4BDB0-8B32-427A-B3EE-A6AD2CD1ED27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34D46720-4E29-41B2-85BA-8CA0A6374D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34D46720-4E29-41B2-85BA-8CA0A6374D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34D46720-4E29-41B2-85BA-8CA0A6374D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34D46720-4E29-41B2-85BA-8CA0A6374D73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
