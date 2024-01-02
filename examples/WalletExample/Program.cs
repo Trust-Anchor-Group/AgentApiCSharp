@@ -115,6 +115,7 @@ namespace WalletExample
             if(numberOfApprovedIdentities == 0)
             {
                 Console.WriteLine("No approved identities found");
+                Console.WriteLine("Applying for legal identity");
                 await ApplyForLegalId();
                 await CheckLegalIdentityStatus(); //restart the process
 
@@ -164,7 +165,30 @@ namespace WalletExample
         /// </summary>
         static async Task ApplyForLegalId()
         {
-            
+            CryptoApi api = new CryptoApi(GlobalConfig.instance);
+            var response = await api.GetAlgorithmsAsync(new object());
+            Console.WriteLine("Available algorithms: " + response.Algorithms.Count);
+            var sortedAlgorithms = response.Algorithms.OrderByDescending(item => item.Safe)
+                                   .ThenByDescending(item => item.SecurityStrength)
+                                   .ToList();
+
+            var selectedAlgorithm = sortedAlgorithms.First();
+            if(selectedAlgorithm == null)
+            {
+                Console.WriteLine("Neuron does not support any algorithms for keys");
+                return;
+            }
+
+
+            Console.WriteLine("Selected algorithm for key: " + selectedAlgorithm.LocalName);
+
+            Console.WriteLine("Generating key");
+            var body = new CreateKeyBody(selectedAlgorithm.LocalName, selectedAlgorithm.VarNamespace, "LegalIdentityKey", Utils.GenerateNonce(), );
+            var key = await api.CreateKeyAsync(new GenerateKeyBody(selectedAlgorithm.Id, 2048));
+
+
+            Console.ReadLine();
+
         }
 
 
@@ -212,6 +236,7 @@ namespace WalletExample
 
             var response = await AccountActions.Login(username, password);
             GlobalConfig.instance.AccessToken = response.Jwt; // Set the JWT token for authentication
+            GlobalConfig.instance.DefaultHeaders.Add("Authorization", "Bearer " + response.Jwt); // Set the JWT token for authentication
 
             Console.WriteLine("Logged in successfully");
         }
