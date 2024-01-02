@@ -9,8 +9,18 @@ using Neuron.Agent.Model;
 
 namespace WalletExample
 {
+
     public static class AccountActions
     {
+        /// <summary>
+        /// Asynchronously creates a new account.
+        /// </summary>
+        /// <param name="apiKey">The API key for account creation.</param>
+        /// <param name="apiSecret">The API secret for account creation.</param>
+        /// <param name="username">The desired username for the new account.</param>
+        /// <param name="password">The password for the new account.</param>
+        /// <param name="eMail">The email address associated with the new account.</param>
+        /// <returns>The task containing the <see cref="CreateAccountResponse"/> object.</returns>
         public static async Task<CreateAccountResponse> CreateAccount(string apiKey, string apiSecret, string username, string password, string eMail)
         {
             AccountApi api = new AccountApi(GlobalConfig.instance);
@@ -41,6 +51,12 @@ namespace WalletExample
             return await api.CreateAccountAsync(request);
         }
 
+        /// <summary>
+        /// Asynchronously logs in to an account.
+        /// </summary>
+        /// <param name="username">The username of the account.</param>
+        /// <param name="password">The password of the account.</param>
+        /// <returns>The task containing the <see cref="LoginResponse"/> object.</returns>
         public static async Task<LoginResponse> Login(string username, string password)
         {
             AccountApi api = new AccountApi(GlobalConfig.instance);
@@ -70,6 +86,12 @@ namespace WalletExample
             return await api.LoginAsync(body);
         }
 
+        /// <summary>
+        /// Asynchronously verifies an email address.
+        /// </summary>
+        /// <param name="eMail">The email associated with a newly created account</param>
+        /// <param name="code">The code sent to the associated email</param>
+        /// <returns>The task containing the <see cref="VerifyEMailResponse"/> object.</returns>
         public static async Task<VerifyEMailResponse> VerifyEMail(string eMail, string code)
         {
             AccountApi api = new AccountApi(GlobalConfig.instance);
