@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Mime;
+using System.Reflection;
 using Neuron.Agent.Client;
 using Neuron.Agent.Model;
 
@@ -1169,7 +1170,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -1279,6 +1280,16 @@ namespace Neuron.Agent.Api
                 localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
             }
 
+            //Get main assembly fullname
+            Assembly headAssembly = Assembly.GetEntryAssembly();
+            if (headAssembly == null)
+                throw new Exception("Could not find entry assembly");
+            string assemblyName = headAssembly.FullName;
+
+            localVarRequestOptions.HeaderParameters.Remove("Referer");
+            localVarRequestOptions.HeaderParameters.Add("Referer", assemblyName);
+
+
             // make the HTTP request
             var localVarResponse = this.Client.Post<IdentityResponseJSON>("/Agent/Legal/ApplyId", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
@@ -1304,6 +1315,7 @@ namespace Neuron.Agent.Api
         public async System.Threading.Tasks.Task<IdentityResponseJSON> ApplyIdAsync(ApplyIdBody applyIdBody = default(ApplyIdBody), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Neuron.Agent.Client.ApiResponse<IdentityResponseJSON> localVarResponse = await ApplyIdWithHttpInfoAsync(applyIdBody, operationIndex, cancellationToken).ConfigureAwait(false);
+
             return localVarResponse.Data;
         }
 
@@ -1321,7 +1333,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -1355,6 +1367,15 @@ namespace Neuron.Agent.Api
             {
                 localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
             }
+
+            //Get main assembly fullname
+            Assembly headAssembly = Assembly.GetEntryAssembly();
+            if (headAssembly == null)
+                throw new Exception("Could not find entry assembly");
+            string assemblyName = headAssembly.FullName;
+
+            localVarRequestOptions.HeaderParameters.Remove("Referer");
+            localVarRequestOptions.HeaderParameters.Add("Referer", assemblyName);
 
             // make the HTTP request
             var localVarResponse = await this.AsynchronousClient.PostAsync<IdentityResponseJSON>("/Agent/Legal/ApplyId", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
@@ -1473,7 +1494,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -1625,7 +1646,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -1777,7 +1798,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -1929,7 +1950,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -2081,7 +2102,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -2233,7 +2254,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -2385,7 +2406,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -2431,6 +2452,7 @@ namespace Neuron.Agent.Api
                     throw _exception;
                 }
             }
+
 
             return localVarResponse;
         }
@@ -2537,7 +2559,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -2689,7 +2711,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -2841,7 +2863,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -2993,7 +3015,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -3145,7 +3167,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -3297,7 +3319,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -3449,7 +3471,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -3601,7 +3623,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -3753,7 +3775,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 
@@ -3905,7 +3927,7 @@ namespace Neuron.Agent.Api
             Neuron.Agent.Client.RequestOptions localVarRequestOptions = new Neuron.Agent.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json", 
+                "application/json",
                 "text/xml"
             };
 

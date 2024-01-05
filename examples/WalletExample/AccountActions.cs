@@ -32,19 +32,7 @@ namespace WalletExample
             string host = api.Configuration.BasePath.Replace("https://", "").Replace("http://", "");
             string s = $"{username}:{host}:{eMail}:{password}:{apiKey}:{nonce}";
 
-            // UTF-8 encode the api secret and the concatenated string
-            byte[] key = Encoding.UTF8.GetBytes(apiSecret);
-            byte[] data = Encoding.UTF8.GetBytes(s);
-
-            string signature;
-            // Calculate the HMAC-SHA256 signature
-            using (HMACSHA256 hmac = new HMACSHA256(key))
-            {
-                byte[] signatureBytes = hmac.ComputeHash(data);
-
-                // Base64-encode the signature
-                signature = Convert.ToBase64String(signatureBytes);
-            }
+            string signature = Utils.Sign(s, apiSecret);
 
             //Create the request
             CreateAccountBody request = new CreateAccountBody(username, eMail, password, apiKey, nonce, signature, 3600);
@@ -68,21 +56,9 @@ namespace WalletExample
             string host = api.Configuration.BasePath.Replace("https://", "").Replace("http://", "");
             string s = $"{username}:{host}:{nonce}";
 
-            // UTF-8 encode the password and the concatenated string
-            byte[] key = Encoding.UTF8.GetBytes(password);
-            byte[] data = Encoding.UTF8.GetBytes(s);
+            string signature = Utils.Sign(s, password);
 
-            string signature;
-            // Calculate the HMAC-SHA256 signature
-            using (HMACSHA256 hmac = new HMACSHA256(key))
-            {
-                byte[] signatureBytes = hmac.ComputeHash(data);
-
-                // Base64-encode the signature
-                signature = Convert.ToBase64String(signatureBytes);
-            }
-
-            LoginBody body = new LoginBody(username, nonce, signature, 3600); 
+            LoginBody body = new LoginBody(username, nonce, signature, 3600);
             return await api.LoginAsync(body);
         }
 
@@ -97,5 +73,7 @@ namespace WalletExample
             AccountApi api = new AccountApi(GlobalConfig.instance);
             return await api.VerifyEMailAsync(new VerifyEMailBody(eMail, code));
         }
+
+
     }
 }
