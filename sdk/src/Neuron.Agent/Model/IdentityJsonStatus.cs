@@ -41,12 +41,12 @@ namespace Neuron.Agent.Model
         /// </summary>
         /// <param name="name">The local name of the status. (required).</param>
         /// <param name="ns">The namespace of the status. (required).</param>
-        /// <param name="created">When the status was created. (required).</param>
-        /// <param name="from">from (required).</param>
-        /// <param name="provider">The Bare JID of the provider. (required).</param>
+        /// <param name="created">When the status was created..</param>
+        /// <param name="from">from.</param>
+        /// <param name="provider">The Bare JID of the provider..</param>
         /// <param name="state">The state of the status. (required).</param>
-        /// <param name="to">to (required).</param>
-        /// <param name="updated">When the status was last updated. (required).</param>
+        /// <param name="to">to.</param>
+        /// <param name="updated">When the status was last updated..</param>
         public IdentityJsonStatus(string name = default(string), string ns = default(string), DateTime created = default(DateTime), DateTime from = default(DateTime), string provider = default(string), string state = default(string), DateTime to = default(DateTime), DateTime updated = default(DateTime))
         {
             // to ensure "name" is required (not null)
@@ -61,20 +61,15 @@ namespace Neuron.Agent.Model
                 throw new ArgumentNullException("ns is a required property for IdentityJsonStatus and cannot be null");
             }
             this.Ns = ns;
-            this.Created = created;
-            this.From = from;
-            // to ensure "provider" is required (not null)
-            if (provider == null)
-            {
-                throw new ArgumentNullException("provider is a required property for IdentityJsonStatus and cannot be null");
-            }
-            this.Provider = provider;
             // to ensure "state" is required (not null)
             if (state == null)
             {
                 throw new ArgumentNullException("state is a required property for IdentityJsonStatus and cannot be null");
             }
             this.State = state;
+            this.Created = created;
+            this.From = from;
+            this.Provider = provider;
             this.To = to;
             this.Updated = updated;
         }
@@ -97,20 +92,20 @@ namespace Neuron.Agent.Model
         /// When the status was created.
         /// </summary>
         /// <value>When the status was created.</value>
-        [DataMember(Name = "created", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "created", EmitDefaultValue = false)]
         public DateTime Created { get; set; }
 
         /// <summary>
         /// Gets or Sets From
         /// </summary>
-        [DataMember(Name = "from", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "from", EmitDefaultValue = false)]
         public DateTime From { get; set; }
 
         /// <summary>
         /// The Bare JID of the provider.
         /// </summary>
         /// <value>The Bare JID of the provider.</value>
-        [DataMember(Name = "provider", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "provider", EmitDefaultValue = false)]
         public string Provider { get; set; }
 
         /// <summary>
@@ -123,14 +118,14 @@ namespace Neuron.Agent.Model
         /// <summary>
         /// Gets or Sets To
         /// </summary>
-        [DataMember(Name = "to", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "to", EmitDefaultValue = false)]
         public DateTime To { get; set; }
 
         /// <summary>
         /// When the status was last updated.
         /// </summary>
         /// <value>When the status was last updated.</value>
-        [DataMember(Name = "updated", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "updated", EmitDefaultValue = false)]
         public DateTime Updated { get; set; }
 
         /// <summary>
@@ -183,42 +178,42 @@ namespace Neuron.Agent.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Ns == input.Ns ||
                     (this.Ns != null &&
                     this.Ns.Equals(input.Ns))
-                ) && 
+                ) &&
                 (
                     this.Created == input.Created ||
                     (this.Created != null &&
                     this.Created.Equals(input.Created))
-                ) && 
+                ) &&
                 (
                     this.From == input.From ||
                     (this.From != null &&
                     this.From.Equals(input.From))
-                ) && 
+                ) &&
                 (
                     this.Provider == input.Provider ||
                     (this.Provider != null &&
                     this.Provider.Equals(input.Provider))
-                ) && 
+                ) &&
                 (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
-                ) && 
+                ) &&
                 (
                     this.To == input.To ||
                     (this.To != null &&
                     this.To.Equals(input.To))
-                ) && 
+                ) &&
                 (
                     this.Updated == input.Updated ||
                     (this.Updated != null &&

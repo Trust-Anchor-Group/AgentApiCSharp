@@ -215,48 +215,48 @@ namespace Neuron.Agent.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Ns == input.Ns ||
                     (this.Ns != null &&
                     this.Ns.Equals(input.Ns))
-                ) && 
+                ) &&
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Xmlns == input.Xmlns ||
                     (this.Xmlns != null &&
                     this.Xmlns.Equals(input.Xmlns))
-                ) && 
+                ) &&
                 (
                     this.ClientPublicKey == input.ClientPublicKey ||
                     (this.ClientPublicKey != null &&
                     this.ClientPublicKey.Equals(input.ClientPublicKey))
-                ) && 
+                ) &&
                 (
                     this.Property == input.Property ||
                     this.Property != null &&
                     input.Property != null &&
                     this.Property.SequenceEqual(input.Property)
-                ) && 
+                ) &&
                 (
                     this.ClientSignature == input.ClientSignature ||
                     (this.ClientSignature != null &&
                     this.ClientSignature.Equals(input.ClientSignature))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.ServerSignature == input.ServerSignature ||
                     (this.ServerSignature != null &&
