@@ -23,6 +23,7 @@ using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Neuron.Agent.Client.OpenAPIDateConverter;
 
+
 namespace Neuron.Agent.Model
 {
     /// <summary>
@@ -99,7 +100,7 @@ namespace Neuron.Agent.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Identity == input.Identity ||
                     (this.Identity != null &&

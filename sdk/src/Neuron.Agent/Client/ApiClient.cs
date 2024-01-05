@@ -478,7 +478,7 @@ namespace Neuron.Agent.Client
                 {
                     try
                     {
-                        response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
+                        response.Data = (T)typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
                     }
                     catch (Exception ex)
                     {
@@ -534,6 +534,8 @@ namespace Neuron.Agent.Client
                 }
                 if (response.StatusCode == 0)
                     throw new ApiException(0, response.ErrorMessage);
+                if (response.ErrorMessage != null)
+                    throw new ApiException((int)response.StatusCode, response.ErrorMessage);
                 return result;
             }
         }
@@ -575,7 +577,7 @@ namespace Neuron.Agent.Client
                 // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
                 if (typeof(Neuron.Agent.Model.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
                 {
-                    response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
+                    response.Data = (T)typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
                 }
                 else if (typeof(T).Name == "Stream") // for binary response
                 {
@@ -622,6 +624,8 @@ namespace Neuron.Agent.Client
                 }
                 if (response.StatusCode == 0)
                     throw new ApiException(0, response.ErrorMessage);
+                if (response.ErrorMessage != null)
+                    throw new ApiException((int)response.StatusCode, response.ErrorMessage);
                 return result;
             }
         }

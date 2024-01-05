@@ -99,7 +99,7 @@ namespace Neuron.Agent.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.Identities == input.Identities ||
                     this.Identities != null &&
