@@ -1,6 +1,9 @@
 ﻿using Neuron.Agent.Api;
 using Neuron.Agent.Client;
 using Neuron.Agent.Model;
+using System.Security.Cryptography;
+using System.Text;
+using System.Xml.Linq;
 
 namespace WalletExample
 {
@@ -109,10 +112,10 @@ namespace WalletExample
                 if (identity.Status.State == "Approved")
                 {
                     numberOfApprovedIdentities++;
-                }   
+                }
             }
 
-            if(numberOfApprovedIdentities == 0)
+            if (numberOfApprovedIdentities == 0)
             {
                 Console.WriteLine("No approved identities found");
                 Console.WriteLine("Applying for legal identity");
@@ -127,7 +130,8 @@ namespace WalletExample
         }
 
         static async Task WaitForLegalIdentityApplication(string id)
-        { try
+        {
+            try
             {
                 Console.WriteLine("Waiting for identity application to be processed");
                 LegalApi api = new LegalApi(GlobalConfig.instance);
@@ -147,6 +151,8 @@ namespace WalletExample
                     if (response.Identity.Status.State == "Rejected")
                     {
                         Console.WriteLine("Identity application rejected");
+                        Console.WriteLine("Press ENTER to retry");
+                        Console.ReadLine();
                         return;
                     }
 
@@ -165,29 +171,71 @@ namespace WalletExample
         /// </summary>
         static async Task ApplyForLegalId()
         {
-            CryptoApi api = new CryptoApi(GlobalConfig.instance);
-            var response = await api.GetAlgorithmsAsync(new object());
+            CryptoApi cryptoApi = new CryptoApi(GlobalConfig.instance);
+            var response = await cryptoApi.GetAlgorithmsAsync(new object());
             Console.WriteLine("Available algorithms: " + response.Algorithms.Count);
+            //Sort algorithms based on safety and secuirity
             var sortedAlgorithms = response.Algorithms.OrderByDescending(item => item.Safe)
                                    .ThenByDescending(item => item.SecurityStrength)
                                    .ToList();
-
+            //Select the most fit algorithm
             var selectedAlgorithm = sortedAlgorithms.First();
-            if(selectedAlgorithm == null)
+
+            if (selectedAlgorithm == null) //This should never happend
             {
                 Console.WriteLine("Neuron does not support any algorithms for keys");
                 return;
             }
-
-
             Console.WriteLine("Selected algorithm for key: " + selectedAlgorithm.LocalName);
 
             Console.WriteLine("Generating key");
-            var body = new CreateKeyBody(selectedAlgorithm.LocalName, selectedAlgorithm.VarNamespace, "LegalIdentityKey", Utils.GenerateNonce(), );
-            var key = await api.CreateKeyAsync(new GenerateKeyBody(selectedAlgorithm.Id, 2048));
+
+            Console.WriteLine("Enter a password for the key:");
+            string keySecret = Console.ReadLine();
+            Console.WriteLine("Enter the password for the account:");
+            string accountSecret = Console.ReadLine();
+
+            string nonce = Utils.GenerateNonce();
+
+            // Step 1: Concatenate the strings
+            string s1 = $"{GlobalConfig.instance.Username}:{cryptoApi.Configuration.BasePath.Replace("https://", "").Replace("http://", "")}:{selectedAlgorithm.LocalName}:{selectedAlgorithm.VarNamespace}:{"LegalIdentityKey"}";
+            Console.WriteLine("Step 1: " + s1);
+            string keySignature = Utils.Sign(s1, keySecret);
+
+            string s2 = $"{s1}:{keySignature}:{nonce}";
+            string requestSignature = Utils.Sign(s2, accountSecret);
 
 
-            Console.ReadLine();
+            var body = new CreateKeyBody(selectedAlgorithm.LocalName, selectedAlgorithm.VarNamespace, "LegalIdentityKey", nonce, keySignature, requestSignature);
+            Console.WriteLine(body.ToJson());
+            var key = await cryptoApi.CreateKeyAsync(body);
+
+
+            LegalApi legalApi = new LegalApi(GlobalConfig.instance);
+            var test = await legalApi.GetApplicationAttributesAsync(new object());
+
+
+            List<ApplyIdBodyPropertiesInner> properties = new List<ApplyIdBodyPropertiesInner>();
+            foreach (var item in test.Required)
+            {
+                Console.WriteLine("Please enter " + item + ":");
+                properties.Add(new ApplyIdBodyPropertiesInner(item, Console.ReadLine()));
+            }
+
+            nonce = Utils.GenerateNonce();
+            s2 = $"{s1}:{keySignature}:{nonce}";
+
+            foreach (var item in properties)
+            {
+                s2 += $":{item.Name}:{item.Value}";
+            }
+
+            requestSignature = Utils.Sign(s2, accountSecret);
+
+            var applyIdBody = new ApplyIdBody("LegalIdentityKey", nonce, keySignature, requestSignature, properties);
+            var applyIdResponse = await legalApi.ApplyIdAsync(applyIdBody);
+
+            await WaitForLegalIdentityApplication(applyIdResponse.Identity.Id);
 
         }
 
@@ -222,6 +270,7 @@ namespace WalletExample
             string code = Console.ReadLine();
             await AccountActions.VerifyEMail(email, code);
             Console.WriteLine("Email verified successfully");
+            GlobalConfig.instance.Username = username;
         }
 
         /// <summary>
@@ -236,7 +285,7 @@ namespace WalletExample
 
             var response = await AccountActions.Login(username, password);
             GlobalConfig.instance.AccessToken = response.Jwt; // Set the JWT token for authentication
-            GlobalConfig.instance.DefaultHeaders.Add("Authorization", "Bearer " + response.Jwt); // Set the JWT token for authentication
+            GlobalConfig.instance.Username = username;
 
             Console.WriteLine("Logged in successfully");
         }
