@@ -1,5 +1,17 @@
 # AgentAPI C# SDK
 
+- [AgentAPI C# SDK](#agentapi-c-sdk)
+  - [**Introduction**](#introduction)
+  - [**Prerequisites**](#prerequisites)
+  - [**Installation**](#installation)
+    - [Installing via NuGet](#installing-via-nuget)
+    - [Installing via Project Reference](#installing-via-project-reference)
+  - [Documentation](#documentation)
+  - [Notes](#notes)
+  - [Examples](#examples)
+    - [How to run examples](#how-to-run-examples)
+
+
 ## **Introduction**
 
 This SDK provides a convenient way to interact with the AgentAPI using C#. It is a maintained build of an automatically generated SDK using OpenAPI Tools Codegen.
