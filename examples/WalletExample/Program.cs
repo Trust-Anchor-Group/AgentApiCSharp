@@ -266,8 +266,8 @@ namespace WalletExample
             string password = Console.ReadLine();
 
             var response = await AccountActions.Login(username, password);
-            GlobalConfig.instance.DefaultHeaders.Add("Authorization", "Bearer " + response.Jwt); // Set the JWT token for authentication
-            //TODO: GlobalConfig.instance.AccessToken = response.Jwt; // Switch to this after fixing the Openapi specification authentication mishaps hotfix
+            //GlobalConfig.instance.DefaultHeaders.Add("Authorization", "Bearer " + response.Jwt); // Set the JWT token for authentication
+            GlobalConfig.instance.AccessToken = response.Jwt; // Switch to this after fixing the Openapi specification authentication mishaps hotfix
             //Here we use the username variable that is used for WWW-Authenticate to store the username
             GlobalConfig.instance.Username = username; //Store Username for later use
 

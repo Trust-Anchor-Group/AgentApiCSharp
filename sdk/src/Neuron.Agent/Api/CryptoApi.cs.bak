@@ -656,7 +656,6 @@ namespace Neuron.Agent.Api
             localVarRequestOptions.Operation = "CryptoApi.GetPublicKey";
             localVarRequestOptions.OperationIndex = operationIndex;
 
-            // authentication (BearerAuth) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
