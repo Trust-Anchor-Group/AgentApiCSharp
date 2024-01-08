@@ -11,14 +11,6 @@ namespace WalletExample
     {
         static async Task Main(string[] args)
         {
-            await EntryMenu();
-        }
-
-        /// <summary>
-        /// Displays and handles the entry point menu
-        /// </summary>
-        static async Task EntryMenu()
-        {
             bool exit = false;
             while (!exit)
             {
@@ -49,6 +41,12 @@ namespace WalletExample
                 }
                 catch (ApiException e)
                 {
+                    Console.WriteLine("An error occured with an Api call");
+                    Console.WriteLine("HTTP code: " + e.ErrorCode);
+                    Console.WriteLine("Message: " + e.Message);
+                }
+                catch (Exception e)
+                {
                     Console.WriteLine("An error occured: " + e.Message);
                 }
             }
@@ -56,140 +54,128 @@ namespace WalletExample
 
         static async Task LoggedInMenu()
         {
-            try
+            //Check if the user has an approved legal identity
+            string? id = await CheckLegalIdentityStatus();
+            while(id == null)
             {
-                await CheckLegalIdentityStatus();
-                Console.WriteLine("1. Get wallet balance");
-                Console.WriteLine("2. Exit");
-                Console.Write("Enter your choice: ");
-
-                string choice = Console.ReadLine();
-
-                switch (choice)
+                id = await ApplyForLegalId();
+                if(id == null)
                 {
-                    case "1":
-                        await GetWalletBalance();
-                        break;
-                    case "2":
-                        break;
+                    Console.WriteLine("Something went wrong");
+                    Console.WriteLine("Press ENTER to retry");
+                    Console.ReadLine();
                 }
             }
-            catch (ApiException e)
+
+            //Wait for the identity to be processed
+            await WaitForLegalIdentityApplication(id);
+
+            Console.WriteLine("1. Get wallet balance");
+            Console.WriteLine("2. Exit");
+            Console.Write("Enter your choice: ");
+
+            string choice = Console.ReadLine();
+
+            switch (choice)
             {
-                Console.WriteLine("An error occured: " + e.Message);
+                case "1":
+                    WalletApi api = new WalletApi(GlobalConfig.instance);
+                    GetBalanceResponse response = await api.GetBalanceAsync(new object());
+                    Console.WriteLine("Balance: " + response.Amount + " " + response.Currency);
+                    break;
+                case "2":
+                    return;
             }
         }
 
-
-        static async Task GetWalletBalance()
+        static async Task<string?> CheckLegalIdentityStatus()
         {
-            WalletApi api = new WalletApi(GlobalConfig.instance);
-            GetBalanceResponse response = await api.GetBalanceAsync(new object());
-            Console.WriteLine("Balance: " + response.Amount + " " + response.Currency);
-        }
-
-        static async Task CheckLegalIdentityStatus()
-        {
-            //request all identities connected to the account
+            //request 10 identities connected to the account
             LegalApi api = new LegalApi(GlobalConfig.instance);
             IdentitiesResponseJSON response = await api.GetIdentitiesAsync(new GetIdentitiesBody(0, 10));
-
-            int numberOfApprovedIdentities = 0;
 
             //check status of all identities
             foreach (var identity in response.Identities)
             {
-                //if the identity is still in the created state, wait for it to be processed
+                //if the identity is still in the created state, return it
                 if (identity.Status.State == "Created")
                 {
                     Console.WriteLine("Identity application not processed yet");
-                    await WaitForLegalIdentityApplication(identity.Id);
-                    await CheckLegalIdentityStatus(); //restart the process
+                    return identity.Id;
+                }
+
+                //if the identity is in the approved state, return it
+                if (identity.Status.State == "Approved")
+                {
+                    Console.WriteLine("Found approved legal identity");
+                    return identity.Id;
+                }
+            }
+
+            return null;
+        }
+
+
+        /// <summary>
+        /// Waits for the legal identity application to be processed if it is in the created state
+        /// </summary>
+        /// <param name="id">The id property of the legal id</param>
+        static async Task WaitForLegalIdentityApplication(string id)
+        {
+            LegalApi api = new LegalApi(GlobalConfig.instance);
+            while (true)
+            {
+                //request the identity
+                IdentityResponseJSON response = await api.GetIdentityAsync(new GetIdentityBody(id));
+
+                //if the identity is in the approved state, return
+                if (response.Identity.Status.State == "Approved")
+                {
+                    Console.WriteLine("Identity application approved");
                     return;
                 }
 
-                //if the identity is in the approved state, return
-                if (identity.Status.State == "Approved")
+                //if the identity is in the rejected state, return
+                if (response.Identity.Status.State == "Rejected")
                 {
-                    numberOfApprovedIdentities++;
+                    Console.WriteLine("Identity application rejected");
+                    Console.WriteLine("Press ENTER to retry");
+                    Console.ReadLine();
+                    return;
                 }
-            }
 
-            if (numberOfApprovedIdentities == 0)
-            {
-                Console.WriteLine("No approved identities found");
-                Console.WriteLine("Applying for legal identity");
-                await ApplyForLegalId();
-                await CheckLegalIdentityStatus(); //restart the process
-
-            }
-            else
-            {
-                Console.WriteLine("Approved identity found");
-            }
-        }
-
-        static async Task WaitForLegalIdentityApplication(string id)
-        {
-            try
-            {
+                //if the identity is in the created state, wait for it to be processed
                 Console.WriteLine("Waiting for identity application to be processed");
-                LegalApi api = new LegalApi(GlobalConfig.instance);
-                while (true)
-                {
-                    //request the identity
-                    IdentityResponseJSON response = await api.GetIdentityAsync(new GetIdentityBody(id));
 
-                    //if the identity is in the approved state, return
-                    if (response.Identity.Status.State == "Approved")
-                    {
-                        Console.WriteLine("Identity application approved");
-                        return;
-                    }
-
-                    //if the identity is in the rejected state, return
-                    if (response.Identity.Status.State == "Rejected")
-                    {
-                        Console.WriteLine("Identity application rejected");
-                        Console.WriteLine("Press ENTER to retry");
-                        Console.ReadLine();
-                        return;
-                    }
-
-                    //wait 5 seconds before checking again
-                    await Task.Delay(5000);
-                }
-            }
-            catch (ApiException ex)
-            {
-                Console.WriteLine("An error occured: " + ex.Message);
+                //wait 5 seconds before checking again
+                await Task.Delay(5000);
             }
         }
 
         /// <summary>
-        /// 
+        /// Applies for a legal identity on the account
         /// </summary>
-        static async Task ApplyForLegalId()
+        /// <returns>The id of the legal identity or null if it fails</returns>
+        static async Task<string?> ApplyForLegalId()
         {
+            //First we need to create a key associated with the legal identity
             CryptoApi cryptoApi = new CryptoApi(GlobalConfig.instance);
-            var response = await cryptoApi.GetAlgorithmsAsync(new object());
-            Console.WriteLine("Available algorithms: " + response.Algorithms.Count);
+            AlgorithmsResult response = await cryptoApi.GetAlgorithmsAsync(new object());
+
             //Sort algorithms based on safety and secuirity
-            var sortedAlgorithms = response.Algorithms.OrderByDescending(item => item.Safe)
+            List<Algorithm> sortedAlgorithms = response.Algorithms.OrderByDescending(item => item.Safe)
                                    .ThenByDescending(item => item.SecurityStrength)
                                    .ToList();
+            if (sortedAlgorithms.Count == 0) //This should never happend
+            {
+                throw new ApiException(0, "Neuron does not support any algorithms for keys");
+            }
+
             //Select the most fit algorithm
             var selectedAlgorithm = sortedAlgorithms.First();
 
-            if (selectedAlgorithm == null) //This should never happend
-            {
-                Console.WriteLine("Neuron does not support any algorithms for keys");
-                return;
-            }
+            Console.WriteLine("Creating key for legal identity");
             Console.WriteLine("Selected algorithm for key: " + selectedAlgorithm.LocalName);
-
-            Console.WriteLine("Generating key");
-
             Console.WriteLine("Enter a password for the key:");
             string keySecret = Console.ReadLine();
             Console.WriteLine("Enter the password for the account:");
@@ -197,52 +183,48 @@ namespace WalletExample
 
             string nonce = Utils.GenerateNonce();
 
-            // Step 1: Concatenate the strings
+            // Create the key signature
             string s1 = $"{GlobalConfig.instance.Username}:{cryptoApi.Configuration.BasePath.Replace("https://", "").Replace("http://", "")}:{selectedAlgorithm.LocalName}:{selectedAlgorithm.VarNamespace}:{"LegalIdentityKey"}";
-            Console.WriteLine("Step 1: " + s1);
             string keySignature = Utils.Sign(s1, keySecret);
 
+            // Create the request signature
             string s2 = $"{s1}:{keySignature}:{nonce}";
             string requestSignature = Utils.Sign(s2, accountSecret);
 
+            // Complete the request 
+            CreateKeyBody createKeybody = new CreateKeyBody(selectedAlgorithm.LocalName, selectedAlgorithm.VarNamespace, "LegalIdentityKey", nonce, keySignature, requestSignature);
+            Console.WriteLine(createKeybody.ToJson());
+            Stored key = await cryptoApi.CreateKeyAsync(createKeybody);
 
-            var body = new CreateKeyBody(selectedAlgorithm.LocalName, selectedAlgorithm.VarNamespace, "LegalIdentityKey", nonce, keySignature, requestSignature);
-            Console.WriteLine(body.ToJson());
-            var key = await cryptoApi.CreateKeyAsync(body);
-
+            // Now we need to apply for the legal identity
 
             LegalApi legalApi = new LegalApi(GlobalConfig.instance);
-            var test = await legalApi.GetApplicationAttributesAsync(new object());
-
-
+            
+            //Get the required properties for the legal identity
+            GetApplicationAttributesResponse attributesResponse = await legalApi.GetApplicationAttributesAsync(new object());
             List<ApplyIdBodyPropertiesInner> properties = new List<ApplyIdBodyPropertiesInner>();
-            foreach (var item in test.Required)
+            foreach (var item in attributesResponse.Required)
             {
                 Console.WriteLine("Please enter " + item + ":");
                 properties.Add(new ApplyIdBodyPropertiesInner(item, Console.ReadLine()));
             }
 
+            //Create the request signature
             nonce = Utils.GenerateNonce();
             s2 = $"{s1}:{keySignature}:{nonce}";
-
             foreach (var item in properties)
             {
                 s2 += $":{item.Name}:{item.Value}";
             }
-
             requestSignature = Utils.Sign(s2, accountSecret);
 
+            //Complete the request
             var applyIdBody = new ApplyIdBody("LegalIdentityKey", nonce, keySignature, requestSignature, properties);
             var applyIdResponse = await legalApi.ApplyIdAsync(applyIdBody);
 
-            await WaitForLegalIdentityApplication(applyIdResponse.Identity.Id);
+            return applyIdResponse.Identity.Id;
 
         }
-
-
-
-
-
 
         /// <summary>
         /// Handles the account creation process
@@ -284,8 +266,10 @@ namespace WalletExample
             string password = Console.ReadLine();
 
             var response = await AccountActions.Login(username, password);
-            GlobalConfig.instance.AccessToken = response.Jwt; // Set the JWT token for authentication
-            GlobalConfig.instance.Username = username;
+            GlobalConfig.instance.DefaultHeaders.Add("Authorization", "Bearer " + response.Jwt); // Set the JWT token for authentication
+            //TODO: GlobalConfig.instance.AccessToken = response.Jwt; // Switch to this after fixing the Openapi specification authentication mishaps hotfix
+            //Here we use the username variable that is used for WWW-Authenticate to store the username
+            GlobalConfig.instance.Username = username; //Store Username for later use
 
             Console.WriteLine("Logged in successfully");
         }

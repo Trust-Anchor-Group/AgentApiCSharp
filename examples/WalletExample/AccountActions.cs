@@ -10,6 +10,9 @@ using Neuron.Agent.Model;
 namespace WalletExample
 {
 
+    /// <summary>
+    /// Contains methods for account actions.
+    /// </summary>
     public static class AccountActions
     {
         /// <summary>
@@ -31,7 +34,6 @@ namespace WalletExample
             //Generate client signature for the request
             string host = api.Configuration.BasePath.Replace("https://", "").Replace("http://", "");
             string s = $"{username}:{host}:{eMail}:{password}:{apiKey}:{nonce}";
-
             string signature = Utils.Sign(s, apiSecret);
 
             //Create the request
