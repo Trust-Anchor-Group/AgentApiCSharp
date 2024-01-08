@@ -7,7 +7,7 @@ This SDK provides a convenient way to interact with the AgentAPI using C#. It is
 ## **Prerequisites**
 
 1. **.NET Standard 2.0 Compatibility**: The AgentApi SDK targets .NET Standard 2.0, ensuring compatibility across multiple .NET environments, including .NET Core and .NET Framework. Make sure your development environment supports .NET Standard 2.0.
-2. **.NET 6.0 SDK**: As the example projects target .NET 6.0, ensure that you have the .NET 6.0 SDK installed on your machine. This will allow you to run and test the examples seamlessly.
+2. **.NET 6.0 SDK**: As the example projects target .NET 6.0, ensure that you have the .NET 6.0 SDK installed on your machine. This will allow you to build and run the examples seamlessly.
 
 ## **Installation**
 
@@ -71,6 +71,7 @@ In this solution each project is a different example.
 * WalletExample
   
    - A console application the goes trough the proccess of creating a wallet for an account, which is explained in this [community post](https://lab.tagroot.io/Community/Post/Creating_a_wallet_using_Agent_API)
+   - The domain on which to connect to can be changed in the `GlobalConfig.cs` file
 
 
 ### How to run examples
