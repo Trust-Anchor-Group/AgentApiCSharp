@@ -7,7 +7,7 @@ This SDK provides a convenient way to interact with the AgentAPI using C#. It is
 ## **Prerequisites**
 
 1. **.NET Standard 2.0 Compatibility**: The AgentApi SDK targets .NET Standard 2.0, ensuring compatibility across multiple .NET environments, including .NET Core and .NET Framework. Make sure your development environment supports .NET Standard 2.0.
-2. **.NET 6.0 SDK**: As the example projects target .NET 6.0, ensure that you have the .NET 6.0 SDK installed on your machine. This will allow you to run and test the examples seamlessly.
+2. **.NET 6.0 SDK**: As the example projects target .NET 6.0, ensure that you have the .NET 6.0 SDK installed on your machine. This will allow you to build and run the examples seamlessly.
 
 ## **Installation**
 
@@ -17,7 +17,7 @@ There are two ways to install the SDK in your project: via NuGet package manager
 
 1. **NuGet Package Manager (Visual Studio)**:
    - In Visual Studio, right-click on your project in the Solution Explorer and select "Manage NuGet Packages".
-   - Search for [AgentApi](https://www.nuget.org/packages/AgentApi/1.0.0) and click 'Install' to add it to your project.
+   - Search for [AgentApi](https://www.nuget.org/packages/AgentApi) and click 'Install' to add it to your project.
 
 2. **NuGet CLI**:
    - Open a command prompt and navigate to your project directory.
@@ -29,7 +29,7 @@ There are two ways to install the SDK in your project: via NuGet package manager
 3. **PackageReference in .csproj File**:
    - Open your project's .csproj file and add the following line within the `<ItemGroup>` tag:
      ```xml
-     <PackageReference Include="AgentApi" Version="1.0.0" />
+     <PackageReference Include="AgentApi" Version="1.*" />
      ```
    - Save the file and restore the NuGet packages.
 
@@ -67,6 +67,11 @@ In this solution each project is a different example.
 * AuthenticationExample
 
    - Simple example that displays how authentication works using the SDK
+
+* WalletExample
+  
+   - A console application the goes trough the proccess of creating a wallet for an account, which is explained in this [community post](https://lab.tagroot.io/Community/Post/Creating_a_wallet_using_Agent_API)
+   - The domain on which to connect to can be changed in the `GlobalConfig.cs` file
 
 
 ### How to run examples
