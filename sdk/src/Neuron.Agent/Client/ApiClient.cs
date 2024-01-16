@@ -533,9 +533,9 @@ namespace Neuron.Agent.Client
                     }
                 }
                 if (response.StatusCode == 0)
-                    throw new ApiException(0, response.ErrorMessage);
+                    throw new ApiException(0, response.ErrorMessage, response.ErrorMessage);
                 if (response.ErrorMessage != null)
-                    throw new ApiException((int)response.StatusCode, response.ErrorMessage);
+                    throw new ApiException((int)response.StatusCode, response.ErrorMessage, response.ErrorMessage);
                 return result;
             }
         }
@@ -623,7 +623,7 @@ namespace Neuron.Agent.Client
                     }
                 }
                 if (response.StatusCode == 0)
-                    throw new ApiException(0, response.ErrorMessage);
+                    throw new ApiException(0, response.ErrorMessage, response.ErrorMessage);
                 if (response.ErrorMessage != null)
                     throw new ApiException((int)response.StatusCode, response.ErrorMessage);
                 return result;
