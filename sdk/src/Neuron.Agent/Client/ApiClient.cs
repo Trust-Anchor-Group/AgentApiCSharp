@@ -142,7 +142,7 @@ namespace Neuron.Agent.Client
             }
             catch (Exception e)
             {
-                throw new ApiException(500, e.Message);
+                throw new ApiException(500, e.Message, response.Content);
             }
         }
 
@@ -533,9 +533,9 @@ namespace Neuron.Agent.Client
                     }
                 }
                 if (response.StatusCode == 0)
-                    throw new ApiException(0, response.ErrorMessage);
+                    throw new ApiException(0, "Request was canceled", response.ErrorMessage);
                 if (response.ErrorMessage != null)
-                    throw new ApiException((int)response.StatusCode, response.ErrorMessage);
+                    throw new ApiException((int)response.StatusCode, "An error occured", response.ErrorMessage);
                 return result;
             }
         }
@@ -623,9 +623,9 @@ namespace Neuron.Agent.Client
                     }
                 }
                 if (response.StatusCode == 0)
-                    throw new ApiException(0, response.ErrorMessage);
+                    throw new ApiException(0, "Request was canceled", response.ErrorMessage);
                 if (response.ErrorMessage != null)
-                    throw new ApiException((int)response.StatusCode, response.ErrorMessage);
+                    throw new ApiException((int)response.StatusCode, "An error occurred", response.ErrorMessage);
                 return result;
             }
         }

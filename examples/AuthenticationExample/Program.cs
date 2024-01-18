@@ -31,10 +31,10 @@ namespace AuthenticationExample
                 LoginResponse response = await AuthenticateUser(accountApi, username, password);
 
                 // the Agent API uses JWT (JSON Web Token) authentication
-                // For future requests we add the JWT as bearer token in the Authorization header.
+                // For future requests we store the JWT in the AccessToken property of the configuration
+                config.AccessToken = response.Jwt;
+                //Optionally you can also manually add the Authorization header to the DefaultHeaders property of the configuration
                 config.DefaultHeaders.Add("Authorization", "Bearer " + response.Jwt);
-                //Optional: 
-                //config.AccessToken = response.Jwt;
                 
                 //Merge Config changes in order to reuse the AccountApi Instance
                 accountApi.Configuration = Configuration.MergeConfigurations(config, accountApi.Configuration);
