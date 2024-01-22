@@ -45,7 +45,7 @@ namespace Neuron.Agent.Model
         /// <param name="type">The type of message. (required).</param>
         /// <param name="timestamp">The timestamp of the message. (required).</param>
         /// <param name="content">The content of the message. (required).</param>
-        public Message(string id = default(string), string from = default(string), string to = default(string), string type = default(string), int timestamp = default(int), string content = default(string))
+        public Message(string id = default(string), string from = default(string), string to = default(string), string type = default(string), int timestamp = default(int), Dictionary<string, Object> content = default(Dictionary<string, Object>))
         {
             // to ensure "from" is required (not null)
             if (from == null)
@@ -115,7 +115,7 @@ namespace Neuron.Agent.Model
         /// </summary>
         /// <value>The content of the message.</value>
         [DataMember(Name = "content", IsRequired = true, EmitDefaultValue = true)]
-        public string Content { get; set; }
+        public Dictionary<string, Object> Content { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -192,8 +192,9 @@ namespace Neuron.Agent.Model
                 ) && 
                 (
                     this.Content == input.Content ||
-                    (this.Content != null &&
-                    this.Content.Equals(input.Content))
+                    this.Content != null &&
+                    input.Content != null &&
+                    this.Content.SequenceEqual(input.Content)
                 );
         }
 
