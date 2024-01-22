@@ -12,7 +12,7 @@
     <Description>.NET standard implementation of the TAG Agent API.</Description>
     <Copyright>Copyright © Trust Anchor Group AB 2023. All rights reserved.</Copyright>
     <RootNamespace>Neuron.Agent</RootNamespace>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Neuron.Agent.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/Trust-Anchor-Group/AgentApiCSharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -22,8 +22,8 @@
     <PackageProjectUrl>https://github.com/Trust-Anchor-Group/AgentApiCSharp</PackageProjectUrl>
     <PackageIcon>Tag64x64.png</PackageIcon>
     <PackageTags>TAG Neuron Agent API</PackageTags>
-    <AssemblyVersion>1.0.4</AssemblyVersion>
-    <FileVersion>1.0.4</FileVersion>
+    <AssemblyVersion>1.0.5</AssemblyVersion>
+    <FileVersion>1.0.5</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
