@@ -532,10 +532,11 @@ namespace Neuron.Agent.Client
                         result.Cookies.Add(cookie);
                     }
                 }
-                if (response.StatusCode == 0)
-                    throw new ApiException(0, "Request was canceled", response.ErrorMessage);
-                if (response.ErrorMessage != null)
-                    throw new ApiException((int)response.StatusCode, "An error occured", response.ErrorMessage);
+                if (response.ErrorMessage != null || response.StatusCode == 0)
+                {
+                    string content = response.Content == null ? "An error occured" : response.Content;
+                    throw new ApiException((int)response.StatusCode, content, response.ErrorMessage);
+                }
                 return result;
             }
         }
@@ -622,10 +623,11 @@ namespace Neuron.Agent.Client
                         result.Cookies.Add(cookie);
                     }
                 }
-                if (response.StatusCode == 0)
-                    throw new ApiException(0, "Request was canceled", response.ErrorMessage);
-                if (response.ErrorMessage != null)
-                    throw new ApiException((int)response.StatusCode, "An error occurred", response.ErrorMessage);
+                if (response.ErrorMessage != null || response.StatusCode == 0)
+                {
+                    string content = response.Content == null ? "An error occured" : response.Content;
+                    throw new ApiException((int)response.StatusCode, content, response.ErrorMessage);
+                }
                 return result;
             }
         }
